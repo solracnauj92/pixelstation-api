@@ -38,6 +38,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net'
+]
+
 
 # Application definition
 
