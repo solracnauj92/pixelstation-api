@@ -21,12 +21,12 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('', include('profiles.urls')),
     path('', include('posts.urls')),
-    path('', include('comments.urls')),
-    path('', include('likes.urls')),
+    path('comments/', include('comments.urls')),
+    path('likes/', include('likes.urls')),
     path('', include('followers.urls')),
     path('', include('forums.urls')),
-    path('', include('messaging.urls')),
-    path('', include('game_library.urls')),
+    path('messaging/', include('messaging.urls')),
+    path('game_library/', include('game_library.urls')),
 
 
     
