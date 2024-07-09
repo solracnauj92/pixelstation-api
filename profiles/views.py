@@ -2,26 +2,28 @@ from django.db.models import Count
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, filters
+from rest_framework import status, filters, generics
 from .models import Profile
 from .serializers import ProfileSerializer
 from pixelstation_api.permissions import IsOwnerOrReadOnly
 
 # Create your views here.
-class ProfileList(APIView):
+class ProfileList(generics.ListAPIView):
     permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = ProfileSerializer
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['post_count', 'followers_count', 'following_count', 'owner__following__created_at', 'owner__followed__created_at']
 
-    def get_queryset(self, request):
-        profiles = Profile.objects.annotate(
+    def get_queryset(self):
+        queryset = Profile.objects.annotate(
             post_count=Count('owner__post', distinct=True),
             followers_count=Count('owner__followed', distinct=True),
             following_count=Count('owner__following', distinct=True)
         ).order_by('-created_at')
-
-        serializer = ProfileSerializer(profiles, many=True, context={'request': request})
-        return Response(serializer.data) 
+        
+        # Apply filtering and ordering
+        queryset = self.filter_queryset(queryset)
+        return queryset 
 
 class ProfileDetail(APIView):
     serializer_class = ProfileSerializer
