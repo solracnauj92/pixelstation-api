@@ -11,7 +11,13 @@ from pixelstation_api.permissions import IsOwnerOrReadOnly
 class ProfileList(generics.ListAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username'
+    ]
     ordering_fields = ['post_count', 'followers_count', 'following_count', 'owner__following__created_at', 'owner__followed__created_at']
 
     def get_queryset(self):
