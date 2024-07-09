@@ -20,6 +20,9 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.owner}'s profile"
 
+    def followers_count(self):
+        return self.followers.all().count()
+
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
