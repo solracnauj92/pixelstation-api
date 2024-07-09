@@ -1,7 +1,8 @@
 from django.http import Http404
-from rest_framework import status, permissions
+from rest_framework import status, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.db.models import Count
 from .models import Post
 from .serializers import PostSerializer
 from pixelstation_api.permissions import IsOwnerOrReadOnly
@@ -12,9 +13,14 @@ class PostList(APIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['created_at', 'comments_count', 'likes_count']
 
     def get(self, request):
-        posts = Post.objects.all()
+        posts = Post.objects.annotate(
+            comments_count=Count('comments', distinct=True),
+            likes_count=Count('likes', distinct=True)
+        ).order_by('-created_at')
         serializer = PostSerializer(
             posts, many=True, context={'request': request}
         )
@@ -39,7 +45,10 @@ class PostDetail(APIView):
 
     def get_object(self, pk):
         try:
-            post = Post.objects.get(pk=pk)
+            post = Post.objects.annotate(
+                comments_count=Count('comments', distinct=True),
+                likes_count=Count('likes', distinct=True)
+            ).get(pk=pk)
             self.check_object_permissions(self.request, post)
             return post
         except Post.DoesNotExist:
