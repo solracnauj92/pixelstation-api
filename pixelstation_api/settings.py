@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'followers',
     'forums',
     'messaging',
+    'game_library',
 
 ]
 

@@ -26,6 +26,8 @@ urlpatterns = [
     path('', include('followers.urls')),
     path('', include('forums.urls')),
     path('', include('messaging.urls')),
+    path('', include('game_library.urls')),
+
 
     
 ]
