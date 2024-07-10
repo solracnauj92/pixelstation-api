@@ -1,131 +1,160 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# [PIXELSTATION API](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com)
 
-Welcome Juan Carlos Diaz Lara,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api)
 
 ---
 
-Happy coding!
+# Introduction
+
+Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com), providing essential functionality for managing users, profiles, and more.
+
+---
+## Installed Apps
+
+The following is a list of Django apps included in the `INSTALLED_APPS` setting in `settings.py`:
+
+- **django.contrib.admin**: Django's built-in administrative interface.
+  
+- **django.contrib.auth**: Handles user authentication and permissions.
+  
+- **django.contrib.contenttypes**: Framework for content types and generic relations.
+  
+- **django.contrib.sessions**: Manages user sessions across requests.
+  
+- **django.contrib.messages**: Messaging framework for user feedback.
+  
+- **cloudinary_storage**: Integrates Cloudinary for static and media file storage.
+  
+- **django.contrib.staticfiles**: Manages static files for serving in production.
+  
+- **cloudinary**: Cloud-based image and video management service.
+  
+- **rest_framework**: Django REST framework for building Web APIs.
+  
+- **django_filters**: Adds dynamic filtering to Django querysets.
+  
+- **rest_framework.authtoken**: Token-based authentication for Django REST framework.
+  
+- **dj_rest_auth**: Extends REST framework with additional authentication features.
+  
+- **django.contrib.sites**: Enables handling multiple websites in a single Django instance.
+  
+- **allauth**: Complete authentication system for Django including social authentication.
+  
+- **allauth.account**: Manages user accounts and related functionalities.
+  
+- **allauth.socialaccount**: Provides social network authentication using Django Allauth.
+  
+- **dj_rest_auth.registration**: User registration endpoints for Django REST framework.
+  
+- **corsheaders**: Adds Cross-Origin Resource Sharing (CORS) support.
+  
+- **profiles**: Manages user profiles or user-specific data.
+  
+- **posts**: Handles creation and management of posts.
+  
+- **comments**: Manages comments related to posts or other content.
+  
+- **likes**: Provides functionalities for liking or favoriting content.
+  
+- **followers**: Manages user follow relationships.
+  
+- **forums**: Provides features for creating and managing discussion forums.
+  
+- **messaging**: Handles messaging functionalities.
+  
+- **game_library**: Manages game libraries.
+
+# Dependencies
+
+Here are the dependencies used in this project:
+
+- **asgiref** (version 3.8.1)
+- **cloudinary** (version 1.40.0)
+- **dj-database-url** (version 0.5.0)
+- **dj-rest-auth** (version 6.0.0)
+- **Django** (version 5.0.7)
+- **django-allauth** (version 0.63.3)
+- **django-allauth-cas** (version 1.0.0)
+- **django-cloudinary-storage** (version 0.3.0)
+- **django-cors-headers** (version 4.4.0)
+- **django-filter** (version 24.2)
+- **djangorestframework** (version 3.15.2)
+- **djangorestframework-simplejwt** (version 5.3.1)
+- **gunicorn** (version 22.0.0)
+- **lxml** (version 5.2.2)
+- **pillow** (version 10.3.0)
+- **psycopg2** (version 2.9.9)
+- **PyJWT** (version 2.8.0)
+- **python-cas** (version 1.6.0)
+- **pytz** (version 2024.1)
+- **setuptools** (version 70.3.0)
+- **sqlparse** (version 0.5.0)
+
+### Dependencies Documentation
+
+Documentation for project dependencies is crucial for developers:
+
+- **Understanding Functionality**: Provides insights into how each dependency works and its purpose.
+- **Usage Guidelines**: Offers examples and best practices for integration and configuration.
+- **API Reference**: Acts as a comprehensive guide to all classes, methods, and parameters.
+- **Updates and Changes**: Keeps developers informed about new features, bug fixes, and compatibility issues.
+- **Community Support**: Provides forums and resources for troubleshooting and community interaction.
+- **Security and Stability**: Ensures secure configurations and stable integrations within projects.
+
+Accurate and accessible documentation enhances development efficiency and promotessoftware solutions.
+
+- **Django**: The web framework
+  - [Django Documentation](https://docs.djangoproject.com/en/stable/)
+
+- **django-allauth**: Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+  - [django-allauth Documentation](https://docs.allauth.org/en/latest/)
+
+- **django-rest-auth**: A set of REST API endpoints for handling User Registration, User Authentication, Password Reset, and more.
+  - [django-rest-auth Documentation](https://dj-rest-auth.readthedocs.io/en/latest/)
+
+- **djangorestframework**: Powerful and flexible toolkit for building Web APIs.
+  - [Django REST framework Documentation](https://www.django-rest-framework.org/)
+
+- **djangorestframework-simplejwt**: A JSON Web Token authentication plugin for Django REST Framework.
+  - [djangorestframework-simplejwt Documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+
+- **django-cors-headers**: Django app for handling the server headers required for Cross-Origin Resource Sharing (CORS).
+  - [django-cors-headers Documentation](https://pypi.org/project/django-cors-headers/)
+
+- **cloudinary**: Cloudinary provides easy-to-use, cloud-based media management solutions for web and mobile developers.
+  - [Cloudinary Documentation](https://cloudinary.com/documentation)
+
+- **dj-database-url**: Allows you to utilise the DATABASE_URL environment variable to configure Django applications with a database connection.
+  - [dj-database-url Documentation](https://pypi.org/project/dj-database-url/)
+
+- **psycopg2**: PostgreSQL adapter for Python.
+  - [psycopg2 Documentation](https://www.psycopg.org/docs/)
+
+- **PyJWT**: JSON Web Token implementation in Python.
+  - [PyJWT Documentation](https://pyjwt.readthedocs.io/en/stable/)
+
+These dependencies are listed in `requirements.txt` to ensure consistent development and deployment environments.
+
+# Installation
+
+To install Pixelstation API locally, follow these steps:
+
+```bash
+# Clone the repository
+git clone <repository_url>
+cd pixelstation-api
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment variables
+# Create a `.env` file and add necessary variables.
+
+# Apply database migrations
+python manage.py migrate
+
+# Start the development server
+python manage.py runserver
