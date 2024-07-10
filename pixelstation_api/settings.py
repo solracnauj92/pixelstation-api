@@ -77,8 +77,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net'
-'localhost', '<your_app_name>.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
+    'localhost',
+    'pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net'
