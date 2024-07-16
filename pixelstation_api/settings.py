@@ -16,6 +16,8 @@ import dj_database_url
 
 if os.path.exists('env.py'):
     import env
+from corsheaders.defaults import default_headers
+
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
