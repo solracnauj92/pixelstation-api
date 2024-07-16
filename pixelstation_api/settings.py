@@ -144,6 +144,19 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'content-type',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
 ROOT_URLCONF = 'pixelstation_api.urls'
 
 TEMPLATES = [
