@@ -1,9 +1,9 @@
 asgiref==3.8.1
 cloudinary==1.40.0
 dj-database-url==0.5.0
-dj-rest-auth==6.0.0
+dj-rest-auth==2.1.9
 Django==5.0.7
-django-allauth==0.63.3
+django-allauth==0.44.0
 django-allauth-cas==1.0.0
 django-cloudinary-storage==0.3.0
 django-cors-headers==4.4.0
@@ -17,5 +17,5 @@ psycopg2==2.9.9
 PyJWT==2.8.0
 python-cas==1.6.0
 pytz==2024.1
-setuptools==70.3.0
+setuptools==59.6.0
 sqlparse==0.5.0
