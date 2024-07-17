@@ -88,7 +88,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
-    'https://3000-solracnauj9-pixelstatio-jwqp2gx31ld.ws.codeinstitute-ide.net',
+    'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
 
 
@@ -137,20 +137,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+    
+    CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    'https://3000-solracnauj9-pixelstatio-jwqp2gx31ld.ws.codeinstitute-ide.net',
-    'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://3000-solracnauj9-pixelstatio-jwqp2gx31ld.ws.codeinstitute-ide.net',
+#     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
+# ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-type',
