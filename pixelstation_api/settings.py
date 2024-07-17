@@ -148,12 +148,12 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     'https://3000-solracnauj9-pixelstatio-jwqp2gx31ld.ws.codeinstitute-ide.net',
-#     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-# ]
+CORS_ALLOWED_ORIGINS = [
+     'https://pixelstationproject5-17ab85818140.herokuapp.com',
+     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
+     'http://localhost:3000',
+     'http://127.0.0.1:3000',
+ ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-type',
