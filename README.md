@@ -11,87 +11,198 @@
 Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com), providing essential functionality for managing users, profiles, and more.
 
 ---
-## Installed Apps
+## Overview of Django Apps
 
-The following is a list of Django apps included in the `INSTALLED_APPS` setting in `settings.py`:
+This project consists of several interconnected Django apps, each responsible for specific functionalities:
 
-- **django.contrib.admin**: Django's built-in administrative interface.
-  
-- **django.contrib.auth**: Handles user authentication and permissions.
-  
-- **django.contrib.contenttypes**: Framework for content types and generic relations.
-  
-- **django.contrib.sessions**: Manages user sessions across requests.
-  
-- **django.contrib.messages**: Messaging framework for user feedback.
-  
-- **cloudinary_storage**: Integrates Cloudinary for static and media file storage.
-  
-- **django.contrib.staticfiles**: Manages static files for serving in production.
-  
-- **cloudinary**: Cloud-based image and video management service.
-  
-- **rest_framework**: Django REST framework for building Web APIs.
-  
-- **django_filters**: Adds dynamic filtering to Django querysets.
-  
-- **rest_framework.authtoken**: Token-based authentication for Django REST framework.
-  
-- **dj_rest_auth**: Extends REST framework with additional authentication features.
-  
-- **django.contrib.sites**: Enables handling multiple websites in a single Django instance.
-  
-- **allauth**: Complete authentication system for Django including social authentication.
-  
-- **allauth.account**: Manages user accounts and related functionalities.
-  
-- **allauth.socialaccount**: Provides social network authentication using Django Allauth.
-  
-- **dj_rest_auth.registration**: User registration endpoints for Django REST framework.
-  
-- **corsheaders**: Adds Cross-Origin Resource Sharing (CORS) support.
-  
-- **profiles**: Manages user profiles or user-specific data.
-  
-- **posts**: Handles creation and management of posts.
-  
-- **comments**: Manages comments related to posts or other content.
-  
-- **likes**: Provides functionalities for liking or favoriting content.
-  
-- **followers**: Manages user follow relationships.
-  
-- **forums**: Provides features for creating and managing discussion forums.
-  
-- **messaging**: Handles messaging functionalities.
-  
-- **game_library**: Manages game libraries.
+![DjangoApps](Documentation/images/django-flowchart.png) 
 
-# Dependencies
+### Comment App
 
-Here are the dependencies used in this project:
+The **Comment** app allows users to comment on posts.
 
-- **asgiref** (version 3.8.1)
-- **cloudinary** (version 1.40.0)
-- **dj-database-url** (version 0.5.0)
-- **dj-rest-auth** (version 6.0.0)
-- **Django** (version 5.0.7)
-- **django-allauth** (version 0.63.3)
-- **django-allauth-cas** (version 1.0.0)
-- **django-cloudinary-storage** (version 0.3.0)
-- **django-cors-headers** (version 4.4.0)
-- **django-filter** (version 24.2)
-- **djangorestframework** (version 3.15.2)
-- **djangorestframework-simplejwt** (version 5.3.1)
-- **gunicorn** (version 22.0.0)
-- **lxml** (version 5.2.2)
-- **pillow** (version 10.3.0)
-- **psycopg2** (version 2.9.9)
-- **PyJWT** (version 2.8.0)
-- **python-cas** (version 1.6.0)
-- **pytz** (version 2024.1)
-- **setuptools** (version 70.3.0)
-- **sqlparse** (version 0.5.0)
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines comment structure.
+- **Serializers (serializers.py)**: Transforms comment data between Python objects and JSON.
+- **Views (views.py)**: Handles requests for comments, interacting with models and serializers.
+- **URLs (urls.py)**: Routes requests to views.
+- **Admin (admin.py)**: Manages comments in the Django admin interface.
+- **Migrations (migrations/)**: Tracks database schema changes.
+- **Tests (tests.py)**: Ensures functionality works as expected.
+
+#### Comment Model:
+- **Fields**: `owner`, `post`, `content`, `created_at`, `updated_at`.
+- **Ordering**: Comments are ordered by creation date (newest first).
+
+#### Serializers:
+- **CommentSerializer**: Handles serialization and deserialization of comments.
+- **CommentDetailSerializer**: Extends CommentSerializer for detailed views.
+
+---
+
+### Follower App
+
+The **Follower** app allows users to follow/unfollow each other.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines follower structure.
+- **Serializers (serializers.py)**: Transforms follower data for API responses.
+- **Views (views.py)**: Handles follower-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages followers in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Follower Model:
+- **Fields**: `owner`, `followed`, `created_at`.
+- **Ordering**: Newest followers first.
+- **Unique Constraint**: Prevents duplicate follow relationships.
+
+#### Serializers:
+- **FollowerSerializer**: Handles serialization of follower data.
+
+---
+
+### Forum App
+
+The **Forum** app enables users to create forums, threads, and posts.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines structures for forums, threads, and posts.
+- **Serializers (serializers.py)**: Transforms forum data.
+- **Views (views.py)**: Handles forum-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages forums in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Models:
+- **Forum**: Fields include `name`, `description`, `created_at`.
+- **Thread**: Fields include `forum`, `title`, `creator`, `created_at`.
+- **Post**: Fields include `thread`, `author`, `content`, `created_at`.
+
+#### Serializers:
+- **ForumSerializer**: Serializes forum data.
+- **ThreadSerializer**: Serializes thread data.
+- **PostSerializer**: Serializes post data.
+
+---
+
+### Game Library App
+
+The **Game Library** app allows users to manage their game collections.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines game and collection structures.
+- **Serializers (serializers.py)**: Transforms game data.
+- **Views (views.py)**: Handles game-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages games in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Models:
+- **Game**: Fields include `title`, `developer`, `release_date`, `platform`.
+- **GameCollection**: Fields include `user`, `game`, `added_at`.
+
+#### Serializers:
+- **GameSerializer**: Serializes game data.
+- **GameCollectionSerializer**: Serializes game collection data.
+
+---
+
+### Likes App
+
+The **Likes** app allows users to express appreciation for posts.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines like structure.
+- **Serializers (serializers.py)**: Transforms like data.
+- **Views (views.py)**: Handles like-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages likes in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Like Model:
+- **Fields**: `owner`, `post`, `created_at`.
+
+#### Serializers:
+- **LikeSerializer**: Handles like data serialization.
+
+---
+
+### Messaging App
+
+The **Messaging** app enables users to send and receive messages.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines message structure.
+- **Serializers (serializers.py)**: Transforms message data.
+- **Views (views.py)**: Handles message-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages messages in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Message Model:
+- **Fields**: `sender`, `receiver`, `content`, `timestamp`.
+
+#### Serializers:
+- **MessageSerializer**: Handles message data serialization.
+
+---
+
+### Post App
+
+The **Post** app allows users to create and manage posts.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines post structure.
+- **Serializers (serializers.py)**: Transforms post data.
+- **Views (views.py)**: Handles post-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages posts in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Post Model:
+- **Fields**: `owner`, `created_at`, `updated_at`, `title`, `content`, `comments`, `likes`, `image`, `image_filter`.
+
+#### Serializers:
+- **PostSerializer**: Handles post data serialization.
+
+---
+
+### User Profile App
+
+The **User Profile** app allows users to create and manage profiles.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines profile structure.
+- **Serializers (serializers.py)**: Transforms profile data.
+- **Views (views.py)**: Handles profile-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages profiles in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Profile Model:
+- **Fields**: `owner`, `created_at`, `updated_at`, `name`, `content`, `image`.
+
+#### Serializers:
+- **ProfileSerializer**: Handles profile data serialization.
+
+#### Views:
+- **ProfileList View**: Lists user profiles.
+- **ProfileDetail View**: Retrieves and updates specific profiles.
+
+---
+
+## Conclusion
+
+This project integrates multiple apps to facilitate user interaction and content management, providing a comprehensive platform for users.
+
 
 ### Dependencies Documentation
 
