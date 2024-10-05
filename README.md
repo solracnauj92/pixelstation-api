@@ -271,12 +271,169 @@ The **User Profile** app allows users to create and manage profiles.
 #### Views:
 - **ProfileList View**: Lists user profiles.
 - **ProfileDetail View**: Retrieves and updates specific profiles.
+-----
+
+# Key Features Implemented / User Stories
+
+### 1. User Profile Management
+Manage your profile to update personal information and preferences.
+
+- **User Story**: As a user, I want to create and edit my profile so that others can know more about me.
+  - **Description**: Users should be able to enter and update personal information such as bio, location, and interests.
+  - **Acceptance Criteria**: Users can fill out and update profile information, with changes reflected on their profile page.
+
+- **User Story**: As a user, I want to upload a profile picture so that my profile is visually recognizable.
+  - **Description**: Users should have the option to upload, change, or remove a profile picture.
+  - **Acceptance Criteria**: Users can upload a profile picture, see it displayed on their profile, and change or delete it as needed.
 
 ---
 
-## Conclusion
+### 2. Creating and Managing Posts
+Create and manage posts to share content with others.
 
-This project integrates multiple apps to facilitate user interaction and content management, providing a comprehensive platform for users.
+- **User Story**: As a user, I want to create a new post so that I can share content with my followers.
+  - **Description**: Users should be able to create posts with text, images, or other media.
+  - **Acceptance Criteria**: Users can create a post, which is then displayed in their feed and visible to their followers.
+
+- **User Story**: As a user, I want to edit or delete my posts so that I can manage the content I share.
+  - **Description**: Users should have the ability to modify or remove their own posts.
+  - **Acceptance Criteria**: Users can edit the content of a post or delete it entirely, with changes reflected in real-time.
+
+---
+
+### 3. Like and Unlike Functionality
+Like or unlike posts to express appreciation for content.
+
+- **User Story**: As a user, I want to like a post to express my appreciation for the content.
+  - **Description**: Users should be able to click a like button on posts.
+  - **Acceptance Criteria**: Users can click a like button, increasing the like count on the post.
+
+- **User Story**: As a user, I want to unlike a post I previously liked to change my reaction.
+  - **Description**: Users should be able to remove their like from a post.
+  - **Acceptance Criteria**: Users can click an unlike button, decreasing the like count on the post.
+
+---
+
+### 4. Commenting on Posts
+Comment on posts to engage in discussions with others.
+
+- **User Story**: As a user, I want to comment on a post to engage in discussions.
+  - **Description**: Users should be able to leave comments on posts to start or join conversations.
+  - **Acceptance Criteria**: Users can enter and submit a comment, which appears under the post.
+
+- **User Story**: As a user, I want to edit or delete my comments to manage my interactions.
+  - **Description**: Users should be able to modify or remove their comments.
+  - **Acceptance Criteria**: Users can edit the content of a comment or delete it, with changes reflected in real-time.
+
+---
+
+### 5. User Registration and Sign In
+Register and sign in to access the platform and its features.
+
+- **User Story**: As a user, I want to create an account so that I can use the platform.
+  - **Description**: Users should be able to sign up by providing necessary details like username, email, and password.
+  - **Acceptance Criteria**: Users can fill out a registration form, submit it, and receive a confirmation email to activate the account.
+
+- **User Story**: As a user, I want to sign in to my account to access my profile and posts.
+  - **Description**: Users should be able to log in using their registered email and password.
+  - **Acceptance Criteria**: Users can enter credentials on a login form, submit them, and access their account if the credentials are correct.
+
+---
+
+### 6. Site Navigation
+Enjoy intuitive navigation to easily find content and features.
+
+- **User Story**: As a user, I can view a navbar from every page to navigate easily between pages.
+  - **Description**: A consistent navigation bar is available on all pages, providing links to essential parts of the site (e.g., Home, Profile, Notifications, Messages).
+  - **Acceptance Criteria**: Navbar appears on every page and contains links that function correctly.
+
+---
+
+### 7. Following and Unfollowing Users
+Manage your social connections effectively.
+
+- **User Story**: As a user, I want to follow other users to see their posts in my feed.
+  - **Description**: Users should be able to follow other users to receive their updates.
+  - **Acceptance Criteria**: Users can click a follow button, and the followed user’s posts appear in their feed.
+
+- **User Story**: As a user, I want to unfollow users I am no longer interested in so that my feed stays relevant.
+  - **Description**: Users should be able to unfollow users they are no longer interested in.
+  - **Acceptance Criteria**: Users can click an unfollow button, and the unfollowed user’s posts no longer appear in their feed.
+
+---
+
+### 8. Followers and Following Lists
+Display the users' social connections.
+
+- **User Story**: As a user, I want to see a list of my followers to know who is following me.
+  - **Description**: Users should be able to view a list of people who follow them.
+  - **Acceptance Criteria**: Users can access a followers list from their profile.
+
+- **User Story**: As a user, I want to see a list of users I am following to manage my connections.
+  - **Description**: Users should be able to view a list of people they are following.
+  - **Acceptance Criteria**: Users can access a following list from their profile.
+
+---
+
+### 9. Messaging Functionality
+Communicate privately with other users.
+
+- **User Story**: As a user, I want to send messages to other users to communicate privately.
+  - **Description**: Users should be able to send direct messages to other users.
+  - **Acceptance Criteria**: Users can compose and send a message, which is received by the recipient.
+
+- **User Story**: As a user, I want to receive messages from other users to have conversations.
+  - **Description**: Users should be able to receive and read direct messages from other users.
+  - **Acceptance Criteria**: Users can receive notifications for new messages and read them in a dedicated inbox.
+
+---
+
+### 10. User Notifications
+Keep users informed about interactions.
+
+- **User Story**: As a user, I want to receive notifications for likes, comments, follows, and messages to stay informed about interactions with my content.
+  - **Description**: Users should receive real-time notifications for various activities related to their account.
+  - **Acceptance Criteria**: Users receive notifications for likes, comments, follows, and messages, either through the app or via email.
+
+---
+
+### 11. Search Functionality
+Find users and content easily.
+
+- **User Story**: As a user, I want to search for other users to connect with them.
+  - **Description**: Users should be able to search for other users by name or username.
+  - **Acceptance Criteria**: Users can enter a query in a search bar and see a list of matching users.
+
+- **User Story**: As a user, I want to search for posts by keywords to find relevant content.
+  - **Description**: Users should be able to search for posts using keywords.
+  - **Acceptance Criteria**: Users can enter keywords in a search bar and see a list of matching posts.
+
+---
+
+### 12. Feed and Timeline
+Interact with your and others’ content.
+
+- **User Story**: As a user, I want to see a feed of posts from users I follow to stay updated with their latest content.
+  - **Description**: Users should have a feed that displays posts from the users they follow.
+  - **Acceptance Criteria**: Users can view a feed with the latest posts from followed users.
+
+- **User Story**: As a user, I want to see my own posts in my timeline to review my shared content.
+  - **Description**: Users should be able to view a chronological list of their own posts.
+  - **Acceptance Criteria**: Users can access a personal timeline that shows all their posts.
+
+---
+
+### 13. Privacy Settings
+Control your privacy on the platform.
+
+- **User Story**: As a user, I want to set my profile to private so that only approved followers can see my posts.
+  - **Description**: Users should have the option to make their profile private.
+  - **Acceptance Criteria**: Users can toggle a privacy setting that restricts profile visibility to approved followers.
+
+- **User Story**: As a user, I want to manage my notification preferences to receive alerts that are important to me.
+  - **Description**: Users should be able to customize which notifications they receive and how.
+  - **Acceptance Criteria**: Users can access and adjust notification settings to their preference.
+
 
 
 ### Dependencies Documentation
