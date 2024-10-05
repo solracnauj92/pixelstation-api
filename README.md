@@ -1,23 +1,27 @@
+![lgogwall](Documentation/images/logowallpaper.jpg) 
 # [PIXELSTATION API](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com)
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
-[![GitHub repo size](https://img.shields.io/github/repo-size/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api)
 
----
 
-# Introduction
+
 
 Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com), providing essential functionality for managing users, profiles, and more.
 
----
-# Aim of the Website
+
+## Aim of the Website
 
 Pixel Station aims to create a dynamic and inclusive community that celebrates the timeless charm of retro gaming. Join us on this nostalgic journey!
 
-# Research
+## Key Findings from User Research
 
-## Target Audience 
+At the beginning of the Pixel Station project, conducting thorough research was essential, even though this project mainly focuses on backend development. Understanding the target audience and the types of users I aim to attract helped shape the overall feel of the website, ensuring that the correct Django apps are implemented to meet user needs.
+
+### Target Audience
+
+![Users](Documentation/images/users.jpg) 
+
 Pixel Station caters to a diverse group of gaming enthusiasts:
 
 1. **Retro Gamers (30-50):**
@@ -44,7 +48,7 @@ Pixel Station caters to a diverse group of gaming enthusiasts:
    - Collectors of retro gaming items.
    - Engaging in discussions about gaming eras.
 
-## User Personas
+### User Personas
 
 1. **As a Classic Gamer:**
    - I want to browse and join discussions about my favorite classic games to connect with like-minded enthusiasts.
