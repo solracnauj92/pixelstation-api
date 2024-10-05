@@ -292,6 +292,41 @@ Documentation for project dependencies is crucial for developers:
 
 Accurate and accessible documentation enhances development efficiency and promotessoftware solutions.
 
+## Dependencies
+
+This project uses the following Python packages. **Note**: I had to downgrade all packages to ensure compatibility with the frontend dependencies, particularly due to the need for matching versions across both back-end and front-end setups.
+
+| Package                               | Version      | Description                                    |
+|---------------------------------------|--------------|------------------------------------------------|
+| asgiref                               | 3.8.1        | ASGI utilities for Django                      |
+| cloudinary                            | 1.41.0       | Cloud-based image and video management         |
+| dj-database-url                       | 0.5.0        | Utility to parse database URLs for Django      |
+| dj-rest-auth                          | 2.1.9        | REST API endpoints for authentication          |
+| Django                                | 3.2.23       | High-level web framework                       |
+| django-allauth                        | 0.52.0       | Authentication and account management          |
+| django-cloudinary-storage             | 0.3.0        | Storage backend for Cloudinary                 |
+| django-cors-headers                   | 4.3.1        | CORS headers for responses                     |
+| django-filter                         | 23.4         | Queryset filtering                             |
+| djangorestframework                   | 3.14.0       | Toolkit for building APIs                      |
+| djangorestframework-simplejwt         | 5.3.1        | JWT authentication                             |
+| gunicorn                              | 23.0.0       | WSGI HTTP server for UNIX                      |
+| oauthlib                              | 3.2.2        | OAuth request-signing logic                    |
+| pillow                                | 10.4.0       | Image processing                               |
+| psycopg2                              | 2.9.9        | PostgreSQL adapter                             |
+| PyJWT                                 | 2.9.0        | JSON Web Token handling                        |
+| python3-openid                        | 3.2.0        | OpenID authentication                          |
+| pytz                                  | 2024.2       | Timezone calculations                          |
+| requests-oauthlib                     | 2.0.0        | OAuth for requests                             |
+| sqlparse                              | 0.5.1        | SQL parsing                                    |
+
+### Installation
+
+You can install the required packages using pip:
+
+pip install -r requirements.txt
+
+### Documentations 
+
 - **Django**: The web framework
   - [Django Documentation](https://docs.djangoproject.com/en/stable/)
 
