@@ -434,9 +434,9 @@ Control your privacy on the platform.
   - **Description**: Users should be able to customize which notifications they receive and how.
   - **Acceptance Criteria**: Users can access and adjust notification settings to their preference.
 
+-----------------------
 
-
-### Dependencies Documentation
+# Dependencies Documentation
 
 Documentation for project dependencies is crucial for developers:
 
@@ -449,7 +449,6 @@ Documentation for project dependencies is crucial for developers:
 
 Accurate and accessible documentation enhances development efficiency and promotessoftware solutions.
 
-## Dependencies
 
 This project uses the following Python packages. **Note**: I had to downgrade all packages to ensure compatibility with the frontend dependencies, particularly due to the need for matching versions across both back-end and front-end setups.
 
