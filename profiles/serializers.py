@@ -11,6 +11,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     following_count = serializers.SerializerMethodField()
     followers = serializers.ReadOnlyField()
     following = serializers.ReadOnlyField()
+
+    name = serializers.CharField(required=False)
+    content = serializers.CharField(required=False)
+    image = serializers.ImageField(required=False)
     
     def get_is_owner(self, obj):
         request = self.context.get('request')
