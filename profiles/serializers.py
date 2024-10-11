@@ -7,23 +7,25 @@ class ProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
     posts_count = serializers.ReadOnlyField()
-    followers_count = serializers.IntegerField()
-    following_count = serializers.SerializerMethodField()
-    followers = serializers.ReadOnlyField()
-    following = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
     
     def get_is_owner(self, obj):
-        request = self.context.get('request')
+        request = self.context['request']
         return request.user == obj.owner
 
     def get_following_id(self, obj):
-        user = self.context.get('request').user
+        user = self.context['request'].user
         if user.is_authenticated:
-            # Implement your logic to get following_id
-            return None  # Replace with your actual logic
+            following = Follower.objects.filter(
 
-    def get_following_count(self, obj):
-        # Implement your logic to get following_count
+                owner=user, followed=obj.owner
+
+            ).first()
+
+            # print(following)
+
+            return following.id if following else None
         return None
 
     class Meta:
