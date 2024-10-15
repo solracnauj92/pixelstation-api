@@ -7,8 +7,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
     posts_count = serializers.ReadOnlyField()
-    followers_count = serializers.IntegerField()
-    following_count = serializers.SerializerMethodField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
     followers = serializers.ReadOnlyField()
     following = serializers.ReadOnlyField()
 
