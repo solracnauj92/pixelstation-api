@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import re
 import dj_database_url
+from datetime import timedelta  # Added for token expiration settings
 
 if os.path.exists('env.py'):
     import env
@@ -58,10 +59,19 @@ if 'DEV' not in os.environ:
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_COOKIE = 'my-app-auth'  # Access token cookie name
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'  # Refresh token cookie name
+JWT_AUTH_SAMESITE = 'None'  # Cross-origin requests
 
+# Token lifetime settings for JWT authentication
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # Access token expires in 5 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  # Refresh token expires in 1 day
+    'ROTATE_REFRESH_TOKENS': True,  # Rotate refresh tokens after use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens after rotation
+    'ALGORITHM': 'HS256',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'pixelstation_api.serializers.CurrentUserSerializer'
 }
