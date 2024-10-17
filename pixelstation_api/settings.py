@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import re
 import dj_database_url
+from datetime import timedelta  # Added for token expiration settings
 
 if os.path.exists('env.py'):
     import env
@@ -28,6 +29,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Database settings
 if 'DEV' in os.environ:
     DATABASES = {
         'default': {
@@ -40,17 +42,19 @@ else:
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
+# REST Framework and Authentication settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
+
+# Only allow JSON rendering in production
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
@@ -58,26 +62,26 @@ if 'DEV' not in os.environ:
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_COOKIE = 'my-app-auth'  # Access token cookie name
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'  # Refresh token cookie name
+JWT_AUTH_SAMESITE = 'None'  # Cross-origin requests
+
+# Token lifetime settings for JWT authentication
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # Access token expires in 5 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  # Refresh token expires in 1 day
+    'ROTATE_REFRESH_TOKENS': True,  # Rotate refresh tokens after use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens after rotation
+    'ALGORITHM': 'HS256',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'pixelstation_api.serializers.CurrentUserSerializer'
 }
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Quick-start development settings
 SECRET_KEY = os.getenv('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
@@ -86,15 +90,43 @@ ALLOWED_HOSTS = [
     'pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
 
-
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
 
+# CORS Configuration
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        os.environ.get('CLIENT_ORIGIN_DEV')
+    ]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'https://pixelstationproject5-17ab85818140.herokuapp.com',
+    'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+# CSRF configuration for handling cross-site requests
+CSRF_COOKIE_SECURE = True  # Secure cookie for CSRF protection
+CSRF_COOKIE_SAMESITE = 'None'  # Allow cross-origin requests
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,7 +158,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-
+# Middleware settings
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -137,34 +169,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        os.environ.get('CLIENT_ORIGIN_DEV')
-    ]
-CORS_ALLOW_CREDENTIALS = True
-
-
-CORS_ALLOWED_ORIGINS = [
-     'https://pixelstationproject5-17ab85818140.herokuapp.com',
-     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
-     'http://localhost:3000',
-     'http://127.0.0.1:3000',
- ]
-
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS',
-]
-
 
 ROOT_URLCONF = 'pixelstation_api.urls'
 
@@ -186,21 +190,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pixelstation_api.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -216,27 +206,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
+# Internationalization settings
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
