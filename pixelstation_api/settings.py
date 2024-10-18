@@ -21,6 +21,7 @@ if os.path.exists('env.py'):
 from corsheaders.defaults import default_headers
 
 
+# Cloudinary settings for media storage
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
@@ -28,6 +29,8 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Database configuration
 
 if 'DEV' in os.environ:
     DATABASES = {
@@ -40,6 +43,9 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
+
+
+# REST Framework configuration
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
@@ -159,6 +165,8 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 
 
+# CORS configuration
+
 CORS_ALLOWED_ORIGINS = [
      'https://pixelstationproject5-17ab85818140.herokuapp.com',
      'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
@@ -250,3 +258,36 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logging configuration
+
+LOGGING = {
+
+    'version': 1,
+
+    'disable_existing_loggers': False,
+
+    'handlers': {
+
+        'console': {
+
+            'class': 'logging.StreamHandler',
+
+        },
+
+    },
+
+    'loggers': {
+
+        'django': {
+
+            'handlers': ['console'],
+
+            'level': 'INFO',
+
+        },
+
+    },
+
+}
+
