@@ -1,13 +1,11 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ForumViewSet, ThreadViewSet, PostViewSet
-
-
-router = DefaultRouter()
-router.register(r'forums', ForumViewSet)
-router.register(r'threads', ThreadViewSet)
-router.register(r'posts', PostViewSet)
+from django.urls import path
+from forums import views
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('forums/', views.ForumViewSet.as_view({'get': 'list'}), name='forum-list'),
+    path('forums/<int:pk>/', views.ForumViewSet.as_view({'get': 'retrieve'}), name='forum-detail'),
+    path('threads/', views.ThreadViewSet.as_view({'get': 'list'}), name='thread-list'),
+    path('threads/<int:pk>/', views.ThreadViewSet.as_view({'get': 'retrieve'}), name='thread-detail'),
+    path('posts/', views.PostViewSet.as_view({'get': 'list'}), name='post-list'),
+    path('posts/<int:pk>/', views.PostViewSet.as_view({'get': 'retrieve'}), name='post-detail'),
 ]
