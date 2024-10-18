@@ -7,10 +7,16 @@ class ForumSerializer(serializers.ModelSerializer):
         model = Forum
         fields = '__all__'
 
+
 class ThreadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thread
-        fields = '__all__'
+        fields = ['id', 'title', 'forum', 'creator']  
+
+    def create(self, validated_data):
+        validated_data['creator'] = self.context['request'].user
+        return super().create(validated_data)
+
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
