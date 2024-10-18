@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from .views import GameViewSet, GameCollectionViewSet
 
+router = DefaultRouter()
+router.register(r'games', GameViewSet)
+router.register(r'collections', GameCollectionViewSet)
+
 urlpatterns = [
-    path('game_library/games/', GameViewSet.as_view({'get': 'list'}), name='game-list'),
-    path('game_library/games/<int:pk>/', GameViewSet.as_view({'get': 'retrieve'}), name='game-detail'),
-    path('game_library/collections/', GameCollectionViewSet.as_view({'get': 'list'}), name='collection-list'),
-    path('game_library/collections/<int:pk>/', GameCollectionViewSet.as_view({'get': 'retrieve'}), name='collection-detail'),
+    path('game_library/', include(router.urls)),  # Add the 'game_library/' prefix
 ]
