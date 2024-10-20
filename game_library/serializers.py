@@ -6,6 +6,7 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = '__all__'
 
+
 class GameCollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = GameCollection

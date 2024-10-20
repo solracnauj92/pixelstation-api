@@ -4,10 +4,10 @@ from .models import Game, GameCollection
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    list_display = ('title', 'developer', 'release_date', 'platform')
-    search_fields = ('title', 'developer', 'platform')
-    list_filter = ('developer', 'platform', 'release_date')
-    ordering = ('-release_date',)
+    list_display = ('title', 'release_year', 'platform')
+    search_fields = ('title', 'platform')
+    list_filter = ('platform', 'release_year')
+    ordering = ('-release_year',)
 
 @admin.register(GameCollection)
 class GameCollectionAdmin(admin.ModelAdmin):
