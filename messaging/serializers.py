@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class MessageSerializer(serializers.ModelSerializer):
     sender = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
-    
+    receiver = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:
         model = Message
         fields = ['id', 'sender', 'receiver', 'content', 'timestamp']
