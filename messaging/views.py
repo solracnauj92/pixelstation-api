@@ -12,5 +12,5 @@ class MessageViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         receiver_id = self.request.query_params.get('receiver', None)
         if receiver_id is not None:
-            queryset = queryset.filter(receiver_id=receiver_id)  
+            queryset = queryset.filter(receiver_id=receiver_id)
         return queryset
