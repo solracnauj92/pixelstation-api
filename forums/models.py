@@ -15,6 +15,7 @@ class Thread(models.Model):
     title = models.CharField(max_length=255)
     creator = models.ForeignKey(User, related_name='threads', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='thread_images/', null=True, blank=True)  
 
     def __str__(self):
         return self.title

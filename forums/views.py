@@ -10,10 +10,18 @@ class ForumViewSet(viewsets.ModelViewSet):
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
-    permission_classes = [IsAuthenticated]  
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        forum_id = self.kwargs.get('forum_id')
+        if forum_id:
+            return self.queryset.filter(forum_id=forum_id)
+        return self.queryset
 
     def perform_create(self, serializer):
-        serializer.save(creator=self.request.user)  
+        forum_id = self.kwargs.get('forum_id')
+        forum = Forum.objects.get(id=forum_id)
+        serializer.save(creator=self.request.user, forum=forum)  
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()

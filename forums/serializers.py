@@ -11,7 +11,7 @@ class ForumSerializer(serializers.ModelSerializer):
 class ThreadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thread
-        fields = ['id', 'title', 'forum', 'creator']  
+        fields = ['id', 'title', 'forum', 'creator', 'image'] 
 
     def create(self, validated_data):
         validated_data['creator'] = self.context['request'].user
