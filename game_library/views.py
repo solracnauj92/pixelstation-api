@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from rest_framework import generics, permissions
 from .models import Game, UserGame
 from .serializers import GameSerializer, UserGameSerializer
-from profiles.models import Profile  
 
 def index(request):
     """
@@ -18,35 +17,44 @@ def index(request):
 
 class GameList(generics.ListCreateAPIView):
     """
-    API view to retrieve list of games or create a new game.
+    API view for the public game catalog.
+    Allows anyone to view the list of games.
+    Only authenticated users can add new games.
     """
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-    permission_classes = [permissions.AllowAny]  # Allow anyone to view the list of games
+
+    def get_permissions(self):
+        # Public read access; authenticated users can create games
+        if self.request.method == "POST":
+            return [permissions.IsAuthenticated()]
+        return [permissions.AllowAny()]
 
 class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    API view to retrieve, update or delete a specific game.
+    API view to retrieve, update, or delete a specific game.
+    Allows anyone to view game details.
     """
     queryset = Game.objects.all()
     serializer_class = GameSerializer
-    permission_classes = [permissions.AllowAny]  # Allow anyone to view game details
+    permission_classes = [permissions.AllowAny]
 
 class UserGameList(generics.ListCreateAPIView):
     """
-    API view to list all UserGames or create a new UserGame for the authenticated user.
+    API view for managing the user's game collection.
+    Only authenticated users can access this.
     """
     serializer_class = UserGameSerializer
-    permission_classes = [permissions.IsAuthenticated]  # Only authenticated users can add games
+    permission_classes = [permissions.IsAuthenticated]  # Only authenticated users can view or add to their collection
 
     def get_queryset(self):
         """
-        Override to return the UserGame instances for the logged-in user.
+        Return the UserGame instances for the logged-in user.
         """
         return UserGame.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         """
-        Override to set the user field when creating a UserGame.
+        Set the user field when creating a UserGame in their collection.
         """
         serializer.save(user=self.request.user)
