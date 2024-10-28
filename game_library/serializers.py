@@ -4,14 +4,12 @@ from .models import Game, UserGame
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = '__all__' 
 
 class UserGameSerializer(serializers.ModelSerializer):
+    game_title = serializers.CharField(source='game.title', read_only=True)  
+    added_at = serializers.DateTimeField(read_only=True)
+
     class Meta:
         model = UserGame
-        fields = ['id', 'game', 'added_at']
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['game_title'] = instance.game.title
-        return representation
+        fields = ['id', 'game', 'added_at', 'game_title']  
