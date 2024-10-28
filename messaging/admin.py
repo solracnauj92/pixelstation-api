@@ -3,7 +3,7 @@ from .models import Message
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('sender', 'receiver', 'timestamp')
-    list_filter = ('timestamp',)
-    search_fields = ('sender__username', 'receiver__username')
-    ordering = ('-timestamp',)
+    list_display = ('subject', 'sender', 'receiver', 'created_at')  
+    search_fields = ('subject', 'content', 'sender__username', 'receiver__username')
+    list_filter = ('sender', 'receiver', 'created_at')  
+    ordering = ('-created_at',)  

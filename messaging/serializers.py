@@ -1,11 +1,7 @@
 from rest_framework import serializers
 from .models import Message
-from django.contrib.auth.models import User
 
 class MessageSerializer(serializers.ModelSerializer):
-    sender = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
-    receiver = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:
         model = Message
-        fields = ['id', 'sender', 'receiver', 'content', 'timestamp']
-        read_only_fields = ['sender', 'timestamp']
+        fields = ['id', 'sender', 'receiver', 'subject', 'content', 'created_at'] 
