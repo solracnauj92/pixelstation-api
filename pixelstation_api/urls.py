@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include('followers.urls')),
     path('forums/', include('forums.urls')),
     path('api/', include('messaging.urls')),
-    path('game_library/', include('game_library.urls')),
+    path('game_library/', include('game_library.urls')), 
 
 
     
