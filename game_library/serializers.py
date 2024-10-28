@@ -1,13 +1,17 @@
 from rest_framework import serializers
-from .models import Game, GameCollection
+from .models import Game, UserGame
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = '__all__'
 
-
-class GameCollectionSerializer(serializers.ModelSerializer):
+class UserGameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GameCollection
-        fields = '__all__'
+        model = UserGame
+        fields = ['id', 'game', 'added_at']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['game_title'] = instance.game.title
+        return representation
