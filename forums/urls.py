@@ -9,4 +9,3 @@ urlpatterns = [
     path('<int:forum_id>/threads/<int:thread_id>/posts/', PostViewSet.as_view({'get': 'list', 'post': 'create'}), name='forum-post-list'),
     path('<int:forum_id>/threads/<int:thread_id>/posts/<int:pk>/', PostViewSet.as_view({'get': 'retrieve'}), name='forum-post-detail'),
 ]
-

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import Forum, Thread, Post
+from .models import Forum, Thread, ForumPost  
 from .serializers import ForumSerializer, ThreadSerializer, PostSerializer
 
 class ForumViewSet(viewsets.ModelViewSet):
@@ -21,13 +21,12 @@ class ThreadViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         forum_id = self.kwargs.get('forum_id')
         forum = Forum.objects.get(id=forum_id)
-        serializer.save(creator=self.request.user, forum=forum)  
+        serializer.save(creator=self.request.user, forum=forum)
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = ForumPost.objects.all()  
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user) 
-
+        serializer.save(author=self.request.user)
