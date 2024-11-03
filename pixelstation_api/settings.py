@@ -136,6 +136,7 @@ INSTALLED_APPS = [
     'likes',
     'followers',
     'forums',
+    'replies',
     'messaging',
     'game_library',
 ]
