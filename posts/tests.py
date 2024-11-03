@@ -34,10 +34,10 @@ class PostDetailViewTests(APITestCase):
         goku = User.objects.create_user(username='goku', password='pass')
         retro_gamer = User.objects.create_user(username='retrogamer', password='pass')
         Post.objects.create(
-            owner=goku, title='a title', content='Goku\'s content'
+            owner=goku, title='a title', content='Gokus content'
         )
         Post.objects.create(
-            owner=retro_gamer, title='another title', content='RetroGamer\'s content'
+            owner=retro_gamer, title='another title', content='RetroGamers content'
         )
 
     def test_can_retrieve_post_using_valid_id(self):
