@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import SubscribedUsers
+from .models import NewsletterSubscription
 
-@admin.register(SubscribedUsers)
-class SubscribedUsersAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email') 
-    search_fields = ('email', 'name')  
-    ordering = ('name',)  
+class NewsletterSubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'email', 'name', 'created_at') 
+    search_fields = ('email',)
 
+admin.site.register(NewsletterSubscription, NewsletterSubscriptionAdmin)
