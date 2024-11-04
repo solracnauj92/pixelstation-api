@@ -8,6 +8,9 @@ class Forum(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 class Thread(models.Model):
     title = models.CharField(max_length=255)
     forum = models.ForeignKey(Forum, related_name='threads', on_delete=models.CASCADE)
