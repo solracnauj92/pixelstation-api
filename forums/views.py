@@ -1,4 +1,4 @@
-# views.py
+# forums/views.py
 
 from rest_framework import generics
 from .models import Forum, Thread, Reply
