@@ -1,32 +1,29 @@
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-from .models import Forum, Thread, ForumPost  
-from .serializers import ForumSerializer, ThreadSerializer, PostSerializer
+# views.py
 
-class ForumViewSet(viewsets.ModelViewSet):
+from rest_framework import generics
+from .models import Forum, Thread, Reply
+from .serializers import ForumSerializer, ThreadSerializer, ReplySerializer
+
+class ForumList(generics.ListCreateAPIView):
     queryset = Forum.objects.all()
     serializer_class = ForumSerializer
 
-class ThreadViewSet(viewsets.ModelViewSet):
+class ForumDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Forum.objects.all()
+    serializer_class = ForumSerializer
+
+class ThreadListCreate(generics.ListCreateAPIView):
+    serializer_class = ThreadSerializer
+    
+    def get_queryset(self):
+        return Thread.objects.filter(forum_id=self.kwargs['forum_id'])
+
+class ThreadDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
-    permission_classes = [IsAuthenticated]
 
+class ReplyListCreate(generics.ListCreateAPIView):
+    serializer_class = ReplySerializer
+    
     def get_queryset(self):
-        forum_id = self.kwargs.get('forum_id')
-        if forum_id:
-            return self.queryset.filter(forum_id=forum_id)
-        return self.queryset
-
-    def perform_create(self, serializer):
-        forum_id = self.kwargs.get('forum_id')
-        forum = Forum.objects.get(id=forum_id)
-        serializer.save(creator=self.request.user, forum=forum)
-
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = ForumPost.objects.all()  
-    serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        return Reply.objects.filter(thread_id=self.kwargs['thread_id'])

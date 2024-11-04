@@ -1,21 +1,18 @@
+
 from rest_framework import serializers
-from .models import Forum, Thread, ForumPost 
+from .models import Forum, Thread, Reply
 
 class ForumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Forum
-        fields = '__all__'
+        fields = ['id', 'title', 'created_at']
 
 class ThreadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thread
-        fields = ['id', 'title', 'forum', 'creator', 'image']
+        fields = ['id', 'title', 'forum', 'created_at']
 
-    def create(self, validated_data):
-        validated_data['creator'] = self.context['request'].user
-        return super().create(validated_data)
-
-class PostSerializer(serializers.ModelSerializer): 
+class ReplySerializer(serializers.ModelSerializer):
     class Meta:
-        model = ForumPost
-        fields = '__all__'
+        model = Reply
+        fields = ['id', 'content', 'thread', 'owner', 'created_at']

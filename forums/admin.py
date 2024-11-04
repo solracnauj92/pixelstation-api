@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Forum, Thread, ForumPost  
+from .models import Forum, Thread, ForumPost, Reply
 
 @admin.register(Forum)
 class ForumAdmin(admin.ModelAdmin):
@@ -14,9 +14,16 @@ class ThreadAdmin(admin.ModelAdmin):
     search_fields = ('title', 'forum__name', 'creator__username')
     ordering = ('-created_at',)
 
-@admin.register(ForumPost)  
-class ForumPostAdmin(admin.ModelAdmin):  
+@admin.register(ForumPost)
+class ForumPostAdmin(admin.ModelAdmin):
     list_display = ('content', 'thread', 'author', 'created_at')
     list_filter = ('thread__forum', 'author', 'created_at')
     search_fields = ('content', 'thread__title', 'author__username')
+    ordering = ('-created_at',)
+
+@admin.register(Reply)
+class ReplyAdmin(admin.ModelAdmin):
+    list_display = ('content', 'post', 'author', 'created_at')
+    list_filter = ('post__thread__forum', 'author', 'created_at')
+    search_fields = ('content', 'post__content', 'author__username')
     ordering = ('-created_at',)
