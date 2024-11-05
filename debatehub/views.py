@@ -7,11 +7,21 @@ class HubList(generics.ListCreateAPIView):
     queryset = Hub.objects.all()
     serializer_class = HubSerializer
 
-class HubDetail(generics.RetrieveAPIView):  # New view for hub detail
+class HubDetail(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Hub.objects.all()
     serializer_class = HubSerializer
+    lookup_field = 'id'
 
+    def get(self, request, *args, **kwargs):
+        try:
+            return super().get(request, *args, **kwargs)
+        except Hub.DoesNotExist:
+            return Response({"detail": "Hub not found."}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            logger.error(f"Error fetching hub detail: {e}")
+            return Response({"detail": "An error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
 class HubDebateList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DebateSerializer
