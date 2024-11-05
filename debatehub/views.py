@@ -1,34 +1,25 @@
 from rest_framework import generics, permissions
-from .models import Hub, Debate, Response
-from .serializers import HubSerializer, DebateSerializer, ResponseSerializer
+from .models import Hub, Debate
+from .serializers import HubSerializer, DebateSerializer
 
 class HubList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Hub.objects.all()
     serializer_class = HubSerializer
 
-class DebateList(generics.ListCreateAPIView):
+class HubDebateList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Debate.objects.all()
     serializer_class = DebateSerializer
 
+    def get_queryset(self):
+        hub_id = self.kwargs['hub_id']
+        return Debate.objects.filter(hub_id=hub_id)
+
     def perform_create(self, serializer):
-        serializer.save(creator=self.request.user) 
+        hub = Hub.objects.get(id=self.kwargs['hub_id'])
+        serializer.save(author=self.request.user, hub=hub)
 
 class DebateDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Debate.objects.all()
     serializer_class = DebateSerializer
-
-class ResponseList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Response.objects.all()
-    serializer_class = ResponseSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)  
-
-class ResponseDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Response.objects.all()
-    serializer_class = ResponseSerializer
