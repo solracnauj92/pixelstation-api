@@ -7,6 +7,11 @@ class HubList(generics.ListCreateAPIView):
     queryset = Hub.objects.all()
     serializer_class = HubSerializer
 
+class HubDetail(generics.RetrieveAPIView):  # New view for hub detail
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Hub.objects.all()
+    serializer_class = HubSerializer
+
 class HubDebateList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DebateSerializer
