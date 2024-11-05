@@ -1,6 +1,6 @@
 # forums/views.py
 
-from rest_framework import generics, permissions
+from rest_framework import generics
 from .models import Forum, Thread, Reply
 from .serializers import ForumSerializer, ThreadSerializer, ReplySerializer
 
@@ -14,10 +14,9 @@ class ForumDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class ThreadListCreate(generics.ListCreateAPIView):
     serializer_class = ThreadSerializer
-    permission_classes = [permissions.IsAuthenticated] 
-
-    def perform_create(self, serializer):
-        serializer.save(creator=self.request.user)  
+    
+    def get_queryset(self):
+        return Thread.objects.filter(forum_id=self.kwargs['forum_id'])
 
 class ThreadDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Thread.objects.all()
