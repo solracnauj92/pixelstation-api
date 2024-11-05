@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HubList, HubDebateList, DebateDetail
+from .views import HubList, HubDetail, HubDebateList, DebateDetail
 
 urlpatterns = [
     path('hubs/', HubList.as_view(), name='hub-list'),
