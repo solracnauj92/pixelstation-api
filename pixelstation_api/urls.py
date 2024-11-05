@@ -35,6 +35,7 @@ urlpatterns = [
     path('messaging/', include('messaging.urls')),
     path('game_library/', include('game_library.urls')), 
     path('newsletter/', include('newsletter.urls')),
+    path('debatehub/', include('debatehub.urls')),
 
 
     

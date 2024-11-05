@@ -141,6 +141,7 @@ INSTALLED_APPS = [
     'messaging',
     'game_library',
     'newsletter',
+    'debatehub'
 ]
 
 SITE_ID = 1
