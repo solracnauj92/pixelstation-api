@@ -11,7 +11,7 @@ class DebateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Debate
-        fields = ['id', 'title', 'hub', 'creator', 'created_at']
+        fields = ['id', 'content', 'hub', 'creator', 'created_at']
 
 class ResponseSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')  
