@@ -21,17 +21,17 @@ class HubDetail(generics.RetrieveAPIView):
         except Exception as e:
             logger.error(f"Error fetching hub detail: {e}")
             return Response({"detail": "An error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+
 class HubDebateList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DebateSerializer
 
     def get_queryset(self):
-        hub_id = self.kwargs['hub_id']
+        hub_id = self.kwargs['id']
         return Debate.objects.filter(hub_id=hub_id)
 
     def perform_create(self, serializer):
-        hub = Hub.objects.get(id=self.kwargs['hub_id'])
+        hub = Hub.objects.get(id=self.kwargs['id'])
         serializer.save(author=self.request.user, hub=hub)
 
 class DebateDetail(generics.RetrieveUpdateDestroyAPIView):
