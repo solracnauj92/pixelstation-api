@@ -857,6 +857,36 @@ This project uses the following Python packages. **Note**: I had to downgrade al
 | requests-oauthlib                     | 2.0.0        | OAuth for requests                             |
 | sqlparse                              | 0.5.1        | SQL parsing                                    |
 
+
+
+
+The backend API uses older versions of dependencies, which were specifically chosen due to their stability and the fact that they have been well-tested in the project. These versions have been integrated into the project for a while and are known to work without introducing major issues, meaning they have a proven track record of reliability.
+
+### Why Older Versions Are Used
+
+- **Proven Stability**: The older versions of dependencies (e.g., Django 3.2.25, PostgreSQL, Cloudinary) have been extensively tested and are known to be stable with this project. This ensures the current functionality of the backend API remains consistent without any unexpected issues.
+
+- **Documentation Availability**: With older versions, there's abundant documentation, tutorials, and community support. The libraries have been around for longer, making it easier to find solutions to any challenges that may arise.
+
+- **Compatibility**: The older versions have been chosen to work well together, ensuring that all dependencies are compatible and that integration between different components of the project is seamless. Upgrading to newer versions can sometimes introduce compatibility issues that might require substantial refactoring.
+
+
+### Why Not Use the Latest Versions?
+
+- **Lack of Widespread Testing**: While the latest versions of libraries often come with new features and improvements, they have not been as widely tested in the same way that older versions have been. New versions may still contain bugs, require significant refactoring, or lead to unforeseen compatibility issues. 
+
+- **Risks of Breaking Changes**: Newer versions often introduce breaking changes that can affect the entire stack, particularly in backend frameworks like Django or libraries like PostgreSQL. These changes can lead to unexpected behavior or issues that may take time to resolve, potentially delaying development and deployment.
+
+- **Long-Term Support**: The versions currently in use are stable, and many come with long-term support (LTS) from their maintainers. This means you can rely on security updates and bug fixes without worrying about the rapid iteration cycles that come with newer versions.
+
+### Future Plans
+
+While the project currently uses older versions of dependencies, future updates and upgrades will be considered once the latest versions have been thoroughly tested and documented. It is important to ensure that the new versions are fully compatible with the existing codebase and do not introduce any breaking changes.
+
+For now, using older versions ensures stability and avoids unnecessary disruptions during active development.
+
+
+
 ### Installation
 
 You can install the required packages using pip:
