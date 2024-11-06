@@ -7,12 +7,13 @@
 
 
 
-Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com), providing essential functionality for managing users, profiles, and more.
+Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com).
 
 
 ## Aim of the Website
 
-Pixel Station aims to create a dynamic and inclusive community that celebrates the timeless charm of retro gaming. Join us on this nostalgic journey!
+Pixiel Station is a vibrant community platform designed for gamers, particularly those passionate about retro games, as well as those curious to explore this unique genre or stay informed about the latest releases. The site offers a rich set of features, including interactive posts, community-driven forums, debate hubs, a monthly themed forum, and a game library, making it a go-to spot for gaming enthusiasts.
+
 
 ## Key Findings from User Research
 
@@ -87,6 +88,32 @@ Pixel Station caters to a diverse group of gaming enthusiasts:
 
 ---
 # Overview of Django Apps
+
+## Backend API Overview
+
+This backend API, built with **Django** and **Django REST Framework**, powers the core functionality of Pixiel Station. It provides robust data management and secure endpoints for user interaction, allowing the frontend to deliver a seamless and engaging experience. Key features managed by the backend include:
+
+- **User Management**: Secure registration, authentication, and profile management, enabling users to like, follow, and connect with each other.
+- **Forum & Comment Management**: Dynamic forum capabilities, including a "Monthly Quest" forum that sparks new discussions each month.
+- **Debate Hub**: A space where users can express their views on a range of gaming-related topics.
+- **Game Library**: A catalog of games where users can add, explore, and interact with entries.
+- **Newsletter Integration**: Tools for community updates and keeping users connected.
+
+### What is Django and Why Use It?
+
+**Django** is a high-level, open-source web framework in Python designed to encourage rapid development and clean, pragmatic design. Developed to make the process of creating complex, database-driven websites simpler and more secure, Django provides a variety of tools out of the box, allowing developers to focus on building their application's unique features rather than reinventing the wheel. 
+
+For Pixiel Station, Django was chosen because:
+
+1. **Efficiency**: Django’s structure promotes reusable and modular code, which supports fast development cycles and makes maintenance easier. 
+2. **Security**: Django provides a robust security layer, helping developers avoid common vulnerabilities such as SQL injection, cross-site scripting, and cross-site request forgery.
+3. **Scalability**: The framework’s ability to handle heavy traffic and large databases makes it ideal for community-focused applications like Pixiel Station.
+4. **RESTful API Support**: Paired with Django REST Framework, Django makes it easy to create a powerful API that can handle complex user interactions and data management.
+
+### Django Version
+
+This project uses **Django 3.2.23**, a stable version compatible with Django REST Framework, recommended for projects hosted on educational and production environments. This version is also the one suggested in the Code Institute lessons, ensuring that the project stays aligned with best practices for beginner and intermediate developers.
+
 
 This project consists of several interconnected Django apps, each responsible for specific functionalities:
 
