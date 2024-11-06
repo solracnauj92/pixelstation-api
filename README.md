@@ -1,6 +1,10 @@
 ![lgogwall](Documentation/images/logowallpaper.jpg) 
 # [PIXELSTATION API](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com)
 
+This project is built with :
+
+![Python](https://www.quintagroup.com/++theme++quintagroup-theme/images/logo_python_section.png)  ![Django](https://www.quintagroup.com/++theme++quintagroup-theme/images/logo_django_section.png)
+
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/solracnauj92/pixelstation-api)](https://github.com/solracnauj92/pixelstation-api/commits/main)
 
@@ -525,6 +529,16 @@ Control your privacy on the platform.
 
 -----------------------
 
+## Technologies Used
+
+The following technologies were used throughout the development of this project:
+
+- **PostgreSQL** - A powerful, open-source relational database management system used for data storage.
+- **Django** - The web framework used to build the backend API.
+- **Python** - The programming language used for the backend development.
+- **Heroku** - The cloud platform used for deploying the project.
+- **Cloudinary** - Used for managing and delivering media files (images, videos).
+
 ## JWT Authentication Setup
 
 In this project, JSON Web Tokens (JWT) authentication is integrated using the Django Rest Auth and Simple JWT libraries. The process involved installing the required packages, configuring settings for JWT authentication, and setting up separate authentication methods for development (using session-based authentication) and production (using token-based authentication). The user registration, login, and profile details retrieval processes are secured with JWT, and the necessary endpoints for user authentication and token management are configured. Additionally, the user's profile information (profile ID and image) is included in the user details response.
@@ -883,6 +897,9 @@ pip install -r requirements.txt
 
 These dependencies are listed in `requirements.txt` to ensure consistent development and deployment environments.
 
+
+
+
 ## References
 
 Below are some of the key resources I used while building and deploying the project:
@@ -891,6 +908,28 @@ Below are some of the key resources I used while building and deploying the proj
 2. [Django REST Framework API Guide - Settings](https://www.django-rest-framework.org/api-guide/settings/#date-and-time-formatting) - Documentation on configuring date and time formatting in Django REST Framework.
 3. [Python Documentation: time.strftime](https://docs.python.org/3/library/time.html#time.strftime) - Official Python documentation for formatting dates and times using `strftime`.
 4. [Django REST Framework](https://www.django-rest-framework.org/) - Official documentation for Django REST Framework, used for building APIs with Django.
+5. **Code Institute Walkthrough Tutorials** - Video tutorials covering backend and frontend development for this project.
+6. **Backend Source Code**: [Code Institute DRF API GitHub Repository](https://github.com/Code-Institute-Solutions/drf-api)
+7. **Frontend Source Code**: [Code Institute Frontend GitHub Repository](https://github.com/Code-Institute-Solutions/moments)
+8. [Django Documentation](https://docs.djangoproject.com/en/5.1/) - Official Django documentation for understanding and configuring Django projects.
+9. [Django For Everybody - Full Python University Course by freeCodeCamp](https://www.youtube.com/watch?v=o0XbHvKxw7Y) - A full, comprehensive course on Django by freeCodeCamp.
+10. [How To Make a Django REST API - Full Tutorial & Deployment by Tech with Tim](https://www.youtube.com/watch?v=t-uAgI-AUxc) - A full tutorial on building and deploying a Django REST API.
+11. [Building a Library Management System (LMS) using Django](https://python.plainenglish.io/building-a-library-management-system-lms-using-django-85a3dd4d9a49) - A tutorial on building a library management system with Django.
+12. [Django Newsletter Documentation](https://django-newsletter.readthedocs.io/en/latest/) - Official documentation for the Django Newsletter app.
+13. [Building an Email Newsletter Subscriber in Django](https://dev.to/shubhamkshatriya25/how-to-build-a-email-newsletter-subscriber-in-django-j2p) - Guide on how to create an email subscription feature in Django.
+14. [Django CRUD API Tutorial](https://dev.to/mr_destructive/django-basics-crud-api-1ld7) - Tutorial on creating a CRUD API with Django.
+15. [Basic Example of a Custom Django Form](https://dev.to/qosha1/basic-example-of-a-custom-django-form-5ln) - A simple guide to custom Django forms.
+16. [Django Model Best Practices](https://dev.to/vigo/django-model-best-practices-3e8e) - Best practices for defining Django models.
+17. ChatGPT - For fixing errors, guiding and understanding code I was unfamiliar with, and providing dummy text for the website content.
+18. [Diffchecker](https://www.diffchecker.com/) - For identifying code differences, especially between the source code of the walkthrough and my own.
+19. Trello - For organizing my Kanban board. Despite using the GitHub board, I primarily used Trello because I am more familiar with it and originally started the project with it.
+20. **[Postman Documentation](https://learning.postman.com/docs/)** - Postman is a powerful tool for testing and developing APIs. This documentation helped me to learn how to use Postman for API testing, debugging, and automation.
+21. **[Dev Tools (Google Chrome)](https://developer.chrome.com/docs/devtools/)** - Google Chrome's Developer Tools (DevTools) is a set of web authoring and debugging tools built into Google Chrome, which is useful for inspecting APIs, viewing network requests, and analyzing performance.
+22. **[Django Rest Framework Authentication](https://www.django-rest-framework.org/api-guide/authentication/)** - Official DRF documentation on authentication mechanisms such as Token, OAuth2, and custom methods.
+23. **[API Design Best Practices](https://www.restapitutorial.com/)** - A tutorial for designing RESTful APIs with best practices. Covers topics like versioning, HTTP methods, status codes, and error handling.
+
+
+
 
 ## Credits
 
