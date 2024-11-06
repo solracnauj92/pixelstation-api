@@ -586,6 +586,200 @@ In this project, I registered for Cloudinary and configured the Django applicati
 6. **Test the Configuration:**
    - With these settings in place, Django will automatically handle image uploads using Cloudinary.
    - Uploaded images will be served from Cloudinary’s CDN.
+
+
+# PostgreSQL Database Setup
+
+
+PostgreSQL is a powerful, open-source relational database management system, chosen for this project due to its compatibility with Django, data integrity features, and scalability. PostgreSQL ensures efficient data handling both during development and in production on Heroku, which offers seamless integration with PostgreSQL through its add-ons.
+
+### Why PostgreSQL?
+- **Data Integrity and Security**: Supports transactional integrity, protecting data from corruption and ensuring consistent state.
+- **Compatibility with Django**: Django’s ORM (Object-Relational Mapping) natively supports PostgreSQL, making querying and migrations simpler.
+- **Scalability**: PostgreSQL is well-suited for large datasets and high-traffic applications, which is ideal for this project.
+- **Heroku Integration**: Heroku provides the Heroku Postgres add-on, which allows PostgreSQL databases to be easily set up and managed in production.
+
+#### Setting Up PostgreSQL
+
+#### 1. Local Development Setup
+
+To set up PostgreSQL for local development:
+
+1. **Install PostgreSQL**:
+   - Download and install PostgreSQL from [PostgreSQL Downloads](https://www.postgresql.org/download/).
+   - Create a new PostgreSQL database and user for your project.
+
+2. **Configure Django to Use PostgreSQL**:
+   - In your `settings.py`, update the `DATABASES` configuration to use PostgreSQL as follows:
+
+     ```python
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.postgresql',
+             'NAME': 'your_database_name',
+             'USER': 'your_username',
+             'PASSWORD': 'your_password',
+             'HOST': 'localhost',
+             'PORT': '5432',
+         }
+     }
+     ```
+
+3. **Apply Migrations**:
+   - Run the following commands to apply migrations to your PostgreSQL database:
+     ```bash
+     python manage.py makemigrations
+     python manage.py migrate
+     ```
+
+#### 2. Production Database Setup on Heroku
+
+To configure PostgreSQL for production on Heroku:
+
+1. **Add the Heroku Postgres Add-On**:
+   - In your Heroku dashboard, navigate to your app, go to the **Resources** tab, and search for "Heroku Postgres" to add it.
+   - This will automatically set the `DATABASE_URL` environment variable in your Heroku config with the PostgreSQL database connection information.
+
+2. **Update Django Settings for Production**:
+   - Modify `settings.py` to retrieve the database configuration from the `DATABASE_URL` environment variable.
+   - This can be done using the `dj_database_url` package, which parses the `DATABASE_URL` and configures Django accordingly.
+
+     ```python
+     import dj_database_url
+
+     DATABASES = {
+         'default': dj_database_url.config(default='postgres://localhost')
+     }
+     ```
+
+## Troubleshooting: Database Forgetting Data Issue in the Front-End
+
+### The Problem
+While working on the project, I encountered an issue where the front-end would register data (like user profiles) successfully, but after some time, the data would disappear or the website would "forget" about it. Despite entering data and seeing successful registration messages, the information would not persist, leading to inconsistent behavior and confusion. 
+
+This issue persisted for about **two weeks**, during which I was convinced that there was something wrong with my code or database configuration. I spent a lot of time debugging, trying different approaches, and adjusting the code, but the problem remained.
+
+### Resolution with Code Institute Support
+After several failed attempts to fix the issue, I reached out to the Code Institute tutor for help. On the **4th attempt**, after explaining the situation, the tutor suggested that the root of the issue was related to the **database link** being used on Heroku. This database link was not properly set up to persist the data, causing the data to be lost periodically.
+
+The tutor recommended creating a **new PostgreSQL database link** on Heroku and reconfiguring the project to connect to this new link. This step helped resolve the issue by ensuring the database was correctly set up to persist data.
+
+I'm extremely thankful for the **guidance from the Code Institute tutor**. If it weren't for their advice on switching to a new database link, I would have continued to struggle for much longer. This experience highlighted the importance of checking external services and their configurations, and not solely focusing on the code itself when troubleshooting issues.
+
+From this point forward, everything began to work smoothly, and the application was able to retain user data across sessions.
+
+
+# How to create a New App on Heroku
+
+To deploy your project to Heroku, follow these steps to create a new app:
+
+1. **Log into Heroku** and go to the [Heroku Dashboard](https://dashboard.heroku.com/).
+2. Click on **“New”** (button with new and an expansion icon).
+3. Select **“Create new app”** from the dropdown menu.
+4. **Give your app a unique name** and select the region closest to you. Once done, click **“Create app”** to confirm.
+
+5. Once the app is created, open the **Settings tab** for the app.
+
+6. In the **Settings** tab, **Add a Config Var**:
+   - **Key**: `DATABASE_URL`
+   - **Value**: Copy your **PostgreSQL URL** from the email you received from Code Institute (do not add quotation marks).
+
+## Deployment to Heroku
+
+Here's the way I have deployed the project, if you want to learn the steps, follow these steps:
+
+1. **Install Required Packages**:
+   - Install `gunicorn` and `django-cors-headers`:
+     ```bash
+     pip3 install gunicorn django-cors-headers
+     ```
+
+2. **Update `requirements.txt`**:
+   - Ensure all dependencies are listed:
+     ```bash
+     pip freeze --local > requirements.txt
+     ```
+
+3. **Create a `Procfile`**:
+   - In the root directory, create a file named `Procfile` (no file extension).
+   - Add the following lines:
+     ```bash
+     release: python manage.py makemigrations && python manage.py migrate
+     web: gunicorn drf_api.wsgi
+     ```
+
+4. **Update `ALLOWED_HOSTS` in `settings.py`**:
+   - Include your Heroku app’s URL:
+     ```python
+     ALLOWED_HOSTS = ['localhost', '<your_app_name>.herokuapp.com']
+     ```
+
+5. **Add `corsheaders` to `INSTALLED_APPS`**:
+   - Update the `INSTALLED_APPS` list in `settings.py`:
+     ```python
+     INSTALLED_APPS = [
+         'corsheaders',
+         ...
+     ]
+     ```
+
+6. **Add CORS Middleware**:
+   - Add `corsheaders.middleware.CorsMiddleware` to the top of the `MIDDLEWARE` list in `settings.py`:
+     ```python
+     MIDDLEWARE = [
+         'corsheaders.middleware.CorsMiddleware',
+         ...
+     ]
+     ```
+
+7. **Configure CORS Allowed Origins**:
+   - Allow network requests from specific origins, including `CLIENT_ORIGIN` (if in production):
+     ```python
+     if 'CLIENT_ORIGIN' in os.environ:
+         CORS_ALLOWED_ORIGINS = [os.environ.get('CLIENT_ORIGIN')]
+     else:
+         CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.gitpod\.io$"]
+     ```
+
+8. **Enable Cookies for Cross-Origin Requests**:
+   - Allow cookies to be sent with cross-origin requests:
+     ```python
+     CORS_ALLOW_CREDENTIALS = True
+     ```
+
+9. **Configure JWT Authentication for Cross-Domain Usage**:
+   - Set `JWT_AUTH_SAMESITE` to `None` for different front-end and back-end domains:
+     ```python
+     JWT_AUTH_SAMESITE = 'None'
+     ```
+
+10. **Use Environment Variable for `SECRET_KEY`**:
+    - Avoid exposing `SECRET_KEY` by using an environment variable:
+      ```python
+      SECRET_KEY = os.getenv('SECRET_KEY')
+      ```
+
+11. **Set `SECRET_KEY` in `env.py`**:
+    - Set a new random value for `SECRET_KEY` in `env.py`:
+      ```python
+      os.environ.setdefault("SECRET_KEY", "CreateANEWRandomValueHere")
+      ```
+
+12. **Set `DEBUG` for Development**:
+    - Set `DEBUG` to `True` in development and `False` in production:
+      ```python
+      DEBUG = 'DEV' in os.environ
+      ```
+
+13. **Ensure `requirements.txt` is Up to Date**:
+    - Run the following command to update `requirements.txt`:
+      ```bash
+      pip freeze --local > requirements.txt
+      ```
+
+14. **Add, Commit, and Push Changes to GitHub**:
+    - After making all changes, commit and push your code to GitHub to ensure it's saved.
+
    
 
 # Dependencies Documentation
