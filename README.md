@@ -781,19 +781,41 @@ Here's the way I have deployed the project, if you want to learn the steps, foll
     - After making all changes, commit and push your code to GitHub to ensure it's saved.
 
    
+## Heroku Deployment
+
+To deploy the project to Heroku, I have followed these steps:
+
+### 1. **Set up Config Vars on Heroku**
+
+   - Go to the **Settings** tab of your Heroku app.
+   - Under the **Config Vars** section, add the following:
+     - `SECRET_KEY`: Create a new secret key (do not use the one from `settings.py`).
+     - `CLOUDINARY_URL`: Copy the Cloudinary URL from your `env.py` file (without quotation marks).
+
+   Example:
+
+   | Key            | Value                              |
+   |----------------|------------------------------------|
+   | `SECRET_KEY`   | `your-new-generated-secret-key`    |
+   | `CLOUDINARY_URL` | `cloudinary://your-cloudinary-url` |
+
+### 2. **Deploy the App**
+
+   - Go to the **Deploy** tab in the Heroku dashboard.
+   - In the **Deployment method** section, select **Connect to GitHub**.
+   - Search for your repository and click **Connect**.
+   - Optionally, enable **Automatic Deploys** to deploy automatically whenever you push to GitHub.
+   - Since all your changes have already been pushed, use **Manual Deploy** to deploy immediately:
+     - In the **Manual deploy** section, select the **Deploy Branch** button to trigger the build process.
+
+   Heroku will now build and deploy your app. Once completed, you should see a successful build log.
+
+### 3. **Launch the App**
+
+   - After the deployment finishes, click the **Open app** button to open your deployed project.
+   - Verify that your project is working by checking for the JSON welcome message on the home screen.
 
 # Dependencies Documentation
-
-Documentation for project dependencies is crucial for developers:
-
-- **Understanding Functionality**: Provides insights into how each dependency works and its purpose.
-- **Usage Guidelines**: Offers examples and best practices for integration and configuration.
-- **API Reference**: Acts as a comprehensive guide to all classes, methods, and parameters.
-- **Updates and Changes**: Keeps developers informed about new features, bug fixes, and compatibility issues.
-- **Community Support**: Provides forums and resources for troubleshooting and community interaction.
-- **Security and Stability**: Ensures secure configurations and stable integrations within projects.
-
-Accurate and accessible documentation enhances development efficiency and promotessoftware solutions.
 
 
 This project uses the following Python packages. **Note**: I had to downgrade all packages to ensure compatibility with the frontend dependencies, particularly due to the need for matching versions across both back-end and front-end setups.
@@ -861,23 +883,22 @@ pip install -r requirements.txt
 
 These dependencies are listed in `requirements.txt` to ensure consistent development and deployment environments.
 
-# Installation
+## References
 
-To install Pixelstation API locally, follow these steps:
+Below are some of the key resources I used while building and deploying the project:
 
-```bash
-# Clone the repository
-git clone <repository_url>
-cd pixelstation-api
+1. [JWT.io](https://jwt.io/) - A website to help understand and debug JSON Web Tokens (JWT).
+2. [Django REST Framework API Guide - Settings](https://www.django-rest-framework.org/api-guide/settings/#date-and-time-formatting) - Documentation on configuring date and time formatting in Django REST Framework.
+3. [Python Documentation: time.strftime](https://docs.python.org/3/library/time.html#time.strftime) - Official Python documentation for formatting dates and times using `strftime`.
+4. [Django REST Framework](https://www.django-rest-framework.org/) - Official documentation for Django REST Framework, used for building APIs with Django.
 
-# Install dependencies
-pip install -r requirements.txt
+## Credits
 
-# Set up environment variables
-# Create a `.env` file and add necessary variables.
+I would like to extend my heartfelt gratitude to the following individuals and team who supported me throughout this project:
 
-# Apply database migrations
-python manage.py migrate
-
-# Start the development server
-python manage.py runserver
+- **Code Institute Tutors**: For their continuous guidance and assistance during the first walkthrough of both the API setup and front-end development. Your expertise has been invaluable.
+- **My Wife**: For her unwavering support and patience during this journey, especially during difficult times. Thank you for always being there for me.
+- **My NHS Workplace Manager**: For understanding my situation and providing flexibility in my work schedule. This allowed me to balance a full-time job and study time effectively.
+- **Other Supportive Individuals**: 
+    - Family and friends who offered encouragement.
+    - The community resources available through forums and tutorials that helped me solve challenges.
