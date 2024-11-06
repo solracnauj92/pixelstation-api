@@ -118,7 +118,33 @@ This project uses **Django 3.2.23**, a stable version compatible with Django RES
 
 ## Django Apps
 
-### Original App Structure and Future Enhancements
+### Key Installed Django Apps
+
+#### Django Core Apps
+- **django.contrib.admin**: Provides an admin interface for managing the application's data models.
+- **django.contrib.auth**: Manages user authentication, permissions, and authorization.
+- **django.contrib.contenttypes**: Handles generic relations and provides the ability to track models in the application.
+- **django.contrib.sessions**: Manages session data to store user-specific information across requests.
+- **django.contrib.messages**: Enables temporary message storage to be displayed to users.
+  
+#### Cloudinary
+- **cloudinary_storage** & **cloudinary**: Manage image storage, uploading, and media handling via Cloudinary's cloud service.
+
+#### REST Framework & Extensions
+- **rest_framework**: A powerful toolkit for building Web APIs. Provides tools for serializing data and handling HTTP requests in a RESTful manner.
+- **django_filters**: Provides filtering capabilities for API views, allowing dynamic querying based on parameters.
+- **dj_rest_auth**: Adds authentication and user registration functionality to the backend, including login, registration, and password reset functionality.
+
+#### Allauth
+- **allauth**: A highly flexible authentication app that handles user registration, social account integration, and email verification.
+- **allauth.account**: Manages user authentication, registration, password management, and account-related views.
+- **allauth.socialaccount**: Enables social media logins via platforms like Facebook, Google, etc.
+  
+#### Corsheaders
+- **corsheaders**: Configures Cross-Origin Resource Sharing (CORS) to enable safe cross-origin requests between the frontend and backend.
+
+
+## Original Custom App Structure and Future Enhancements
 
 This backend API focuses on achieving a functional foundation across apps, with simplified implementations for certain features due to project constraints. Each app contributes to Pixiel Station's core experience, with several areas identified for future enhancement as I continue to develop my skills. 
 
@@ -130,7 +156,7 @@ Here's the original flowchart:
 
 Current folowchart:
 
-![DjangoApps](Documentation/images/django-flowchart.png) 
+![DjangoApps](Documentation/images/customdjangoflowchart.png) 
 
 #### 1. Post, Like, Follow, and User Profile Apps
 These apps provide Pixiel Station's core social interaction features, allowing users to create posts, like content, follow other users, and manage their profiles. Built based on the Code Institute’s walkthrough project, they include basic social functionalities essential for user engagement and connection.
