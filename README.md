@@ -525,6 +525,69 @@ Control your privacy on the platform.
 
 -----------------------
 
+## JWT Authentication Setup
+
+In this project, JSON Web Tokens (JWT) authentication is integrated using the Django Rest Auth and Simple JWT libraries. The process involved installing the required packages, configuring settings for JWT authentication, and setting up separate authentication methods for development (using session-based authentication) and production (using token-based authentication). The user registration, login, and profile details retrieval processes are secured with JWT, and the necessary endpoints for user authentication and token management are configured. Additionally, the user's profile information (profile ID and image) is included in the user details response.
+
+-----------------------
+
+## Cloudinary Setup
+
+Cloudinary is a powerful cloud-based media management platform that streamlines the process of storing, managing, and delivering images and videos. It offers seamless integration with web applications, enabling efficient media handling through features like image uploads, transformations, and optimized delivery.
+
+In this project, I registered for Cloudinary and configured the Django application to utilize its services for image hosting. This integration enhances media management by automating image uploads, storage, and delivery, improving overall application performance and scalability.
+
+
+### Setup Steps according to Code Insitute Walkthrough:
+
+1. **Sign Up for Cloudinary:**
+   - Go to [Cloudinary](https://cloudinary.com) and sign up for a free account.
+   - After registering, validate your account via the confirmation email.
+   - In the `Media Library`, you can upload sample images or drag and drop images from your machine.
+
+2. **Get API Credentials:**
+   - From the `Dashboard`, go to the account details section and find the **API Environment Variable**. This contains the API credentials you'll use to connect Django to Cloudinary.
+
+3. **Create a Django Project:**
+   - Initialize a new Django project using `django-admin startproject drf_api` or use an existing one.
+   - Install the necessary libraries: `django-cloudinary-storage` for Cloudinary integration and `Pillow` for image processing:
+     ```bash
+     pip install django-cloudinary-storage Pillow
+     ```
+
+4. **Configure Django Settings:**
+   - In `settings.py`, add the following apps to `INSTALLED_APPS` in the specified order:
+     ```python
+     INSTALLED_APPS = [
+         'django.contrib.staticfiles',
+         'cloudinary_storage',
+         'cloudinary',
+         ...
+     ]
+     ```
+   - Set up the **Cloudinary Environment Variable**:
+     Create a file named `env.py` in your project’s root directory and include your Cloudinary API credentials:
+     ```python
+     import os
+     os.environ['CLOUDINARY_URL'] = '<your_cloudinary_url>'
+     ```
+
+5. **Set up Media Configuration:**
+   - In `settings.py`, configure Cloudinary by setting:
+     ```python
+     CLOUDINARY_STORAGE = {
+         'CLOUDINARY_URL': os.getenv('CLOUDINARY_URL')
+     }
+
+     MEDIA_URL = '/media/'
+     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+     ```
+   
+6. **Test the Configuration:**
+   - With these settings in place, Django will automatically handle image uploads using Cloudinary.
+   - Uploaded images will be served from Cloudinary’s CDN.
+   
+
 # Dependencies Documentation
 
 Documentation for project dependencies is crucial for developers:
