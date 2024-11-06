@@ -9,7 +9,7 @@
 
 Welcome to Pixelstation API, a backend service for [Pixelstation](https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com).
 
-
+# Buisness Model 
 ## Aim of the Website
 
 Pixiel Station is a vibrant community platform designed for gamers, particularly those passionate about retro games, as well as those curious to explore this unique genre or stay informed about the latest releases. The site offers a rich set of features, including interactive posts, community-driven forums, debate hubs, a monthly themed forum, and a game library, making it a go-to spot for gaming enthusiasts.
@@ -86,10 +86,12 @@ Pixel Station caters to a diverse group of gaming enthusiasts:
 3. **Amy - Retro Streamer (Age: 32):**
    > "Pixel Station is a haven for content creators like me! Sharing my retro gaming experiences with a collaborative community has been fantastic. The support and engagement from viewers within the Pixel Station community have significantly boosted my channel. It's more than just a platform; it's a retro gaming family!"
 
----
-# Overview of Django Apps
 
-## Backend API Overview
+
+
+# Django Backend API Overview
+
+
 
 This backend API, built with **Django** and **Django REST Framework**, powers the core functionality of Pixiel Station. It provides robust data management and secure endpoints for user interaction, allowing the frontend to deliver a seamless and engaging experience. Key features managed by the backend include:
 
@@ -114,10 +116,41 @@ For Pixiel Station, Django was chosen because:
 
 This project uses **Django 3.2.23**, a stable version compatible with Django REST Framework, recommended for projects hosted on educational and production environments. This version is also the one suggested in the Code Institute lessons, ensuring that the project stays aligned with best practices for beginner and intermediate developers.
 
+## Django Apps
 
-This project consists of several interconnected Django apps, each responsible for specific functionalities:
+### Original App Structure and Future Enhancements
+
+This backend API focuses on achieving a functional foundation across apps, with simplified implementations for certain features due to project constraints. Each app contributes to Pixiel Station's core experience, with several areas identified for future enhancement as I continue to develop my skills. 
+
+> **Note**: Originally, the project scope included the Game Library, Forum, Post, Like, Comment, and User Profile apps. Additional features, such as the Debate Hub and Newsletter, were incorporated as extra functionality, expanding the site's interactive capabilities. 
+
+Here's the original flowchart:
 
 ![DjangoApps](Documentation/images/django-flowchart.png) 
+
+Current folowchart:
+
+![DjangoApps](Documentation/images/django-flowchart.png) 
+
+#### 1. Post, Like, Follow, and User Profile Apps
+These apps provide Pixiel Station's core social interaction features, allowing users to create posts, like content, follow other users, and manage their profiles. Built based on the Code Institute’s walkthrough project, they include basic social functionalities essential for user engagement and connection.
+
+#### 2. Game Library App
+The Game Library app was designed to offer a catalog where users could add games and manage personal collections. Currently, users can add games and view the game library, but the feature to create personal collections was not completed within the project timeline. The app provides a functional, community-accessible library, with future updates planned to enhance personalisation.
+
+#### 3. Forum App
+Initially, the Forum app was planned to have a standard thread-and-reply structure for in-depth discussions. Due to time constraints and a learning curve with Django and React, the forum design was simplified to allow users to create a forum topic with a title and description, appearing as a direct-response format on the frontend. While functional, this diverges from the original vision, with plans for a full thread structure in future updates.
+
+#### 4. Debate Hub App
+Similar to the Forum app, the Debate Hub was envisioned to support nested discussions within each debate topic. The current implementation allows users to view a list of debate topics and participate directly. Although the nested reply structure was postponed, users can still engage in discussions within each hub topic. Future updates will introduce the intended thread-and-reply model.
+
+### 5. Newsletter App
+The Newsletter app allows users to subscribe to community updates. This app was implemented fully as intended, enabling community connection without requiring major adjustments.
+
+### 6. Messaging App (Not Functional)
+The Messaging app posed significant challenges, particularly in endpoint connections, and remained non-functional at the project's close. Despite dedicated troubleshooting efforts, limited support options made resolving these issues difficult. In the future, I plan to reattempt this feature, potentially by following additional tutorials or seeking further guidance to implement a reliable messaging service.
+
+## App Models 
 
 ### Comment App
 
@@ -273,6 +306,9 @@ The **Post** app allows users to create and manage posts.
 
 #### Serializers:
 - **PostSerializer**: Handles post data serialization.
+
+---
+
 
 ---
 
