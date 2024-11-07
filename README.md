@@ -158,9 +158,12 @@ Here's the original flowchart:
 
 ![DjangoApps](Documentation/images/django-flowchart.png) 
 
-Current folowchart:
+> **Note**: Originally, the project scope included the Game Library, Forum, Post, Like, Comment, and User Profile apps. Additional features, such as the Debate Hub and Newsletter, were incorporated as extra functionality, expanding the site's interactive capabilities. 
 
-![DjangoApps](Documentation/images/customdjangoflowchart.png) 
+Current relationship entity chart:
+> **Note**: Entity relationships with red lines at the top and bottom of the box indicate features that were originally implemented but are now planned as future features for the website.
+
+![DjangoAppsnow](Documentation/images/entity.png) 
 
 #### 1. Post, Like, Follow, and User Profile Apps
 These apps provide Pixiel Station's core social interaction features, allowing users to create posts, like content, follow other users, and manage their profiles. Built based on the Code Institute’s walkthrough project, they include basic social functionalities essential for user engagement and connection.
@@ -180,9 +183,12 @@ The Newsletter app allows users to subscribe to community updates. This app was 
 ### 6. Messaging App (Not Functional)
 The Messaging app posed significant challenges, particularly in endpoint connections, and remained non-functional at the project's close. Despite dedicated troubleshooting efforts, limited support options made resolving these issues difficult. In the future, I plan to reattempt this feature, potentially by following additional tutorials or seeking further guidance to implement a reliable messaging service.
 
+
 ## App Models 
 
 ### Comment App
+
+
 
 The **Comment** app allows users to comment on posts.
 
