@@ -614,6 +614,88 @@ Control your privacy on the platform.
   - **Description**: Users should be able to customize which notifications they receive and how.
   - **Acceptance Criteria**: Users can access and adjust notification settings to their preference.
 
+<br></br>
+
+# API Documentation page
+
+This section outlines the available API routes and their corresponding views. It’s crucial to verify the functionality of these endpoints before connecting the front-end to ensure the application works as expected.
+
+In my project, I ran into many issues with incorrect endpoint names and mappings on the front-end. As a result, I had to come back to the API to reroute and fix those endpoints. Without making sure these routes were correctly set up and functional, the front-end wouldn’t work at all.
+
+To avoid the frustration of dealing with broken connections and data fetch failures, it's essential to check that the API is functioning properly before integrating it with the front-end. This way, you ensure smooth interaction between both ends of the application.
+
+**Note:** Some pages are not functioning as expected. This is due to them being **future features** that are still under development. These features are ongoing and will be addressed in future updates.
+
+
+### Routes and Views
+
+#### Root Route
+![routeroute](/Documentation/images/routeroute.png)
+
+#### Forum
+
+##### Forum List
+![fourmlist](/Documentation/images/fourmlist.png)
+
+#### Game Library
+
+##### Game List
+![gamelist](/Documentation/images/gamelist.png)
+
+##### Game Detail
+![gamedetail](/Documentation/images/gamedetail.png)
+
+#### Debate Hub
+
+##### Hub List
+![hublist](/Documentation/images/hublist.png)
+
+##### Hub Detail
+![hubdetail](/Documentation/images/hubdetail.png)
+
+##### Hub Debate List
+![hubdebatelist](/Documentation/images/hubdebatelist.png)
+
+#### Posts
+
+##### Post List
+![postlist](/Documentation/images/postlist.png)
+
+##### Post Detail
+![postdetail](/Documentation/images/postdetail.png)
+
+#### Comments
+
+##### Comments
+![comments](/Documentation/images/comments.png)
+
+##### Comment Detail
+![commentdetail](/Documentation/images/commentdetail.png)
+
+#### Likes
+
+##### Like List
+![likelist](/Documentation/images/likelist.png)
+
+##### Like Detail
+![likedetail](/Documentation/images/likedetail.png)
+
+#### User Profile
+
+##### Profile List
+![profilelist](/Documentation/images/profilelist.png)
+
+##### Profile Detail
+![profiledetail](/Documentation/images/profiledetail.png)
+
+#### Messaging
+
+##### Newsletter
+![newsletter](/Documentation/images/newsletter.png)
+
+##### User Game List
+![usergamelist](/Documentation/images/usergamelist.png)
+
 -----------------------
 
 ### URL Configuration
