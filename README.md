@@ -616,6 +616,41 @@ Control your privacy on the platform.
 
 <br></br>
 
+# Kanban Agile Workflow
+
+In this project, the **Kanban** method was used to manage the development workflow. Kanban is a visual tool that enables the team to focus on work items in progress while optimizing efficiency and flow. The workflow is broken down into columns such as "To Do," "In Progress," and "Done," which allows the team to prioritize tasks and manage work effectively. This method was chosen to maintain a clear overview of the current and upcoming tasks, ensuring that no task is overlooked and that the project progresses smoothly.
+
+The Kanban board was used to organize user stories, bugs, and features. By tracking the status of tasks, we were able to identify bottlenecks and adjust priorities quickly. This visual approach helped ensure that the project stayed on track and aligned with deadlines.
+
+### API User Stories
+
+#### **User Stories (Completed)**
+- User can update their profile information
+- User can create a new post
+- User can comment on a post
+- User can like a post
+- User can write reviews for games
+- User can subscribe to newsletters
+- User can follow other users
+- User can participate in forum discussions
+- User can send messages to other users
+- Admin can manage user profiles
+- Admin can moderate user posts
+- User can add games to their library
+- Newsletter
+- Game Library
+- Debate Hub
+- Forum Monthly
+
+#### **User Stories (To Do)**
+- User can create and participate in polls
+- User can earn and showcase achievements
+- User can view and RSVP to events
+- Admin can manage events and RSVPs
+
+![User Stories Screenshot](Documentation/images/userstoriesapi.png)
+
+
 # API Documentation page
 
 This section outlines the available API routes and their corresponding views. It’s crucial to verify the functionality of these endpoints before connecting the front-end to ensure the application works as expected.
