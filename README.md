@@ -825,6 +825,37 @@ I'm extremely thankful for the **guidance from the Code Institute tutor**. If it
 
 From this point forward, everything began to work smoothly, and the application was able to retain user data across sessions.
 
+# Bugs and Fixes
+
+Throughout the project, several bugs emerged, often requiring detailed troubleshooting and debugging. Below are some key issues and fixes implemented:
+
+#### 1. Endpoint Naming and Typos
+- **Issue**: Mismatched endpoint names and typos caused front-end requests to fail.
+- **Fix**: Standardized endpoint names across URLs, views, and serializers to ensure consistent API responses.
+
+#### 2. Models and Relationships Not Defined Properly
+- **Issue**: Missing or incorrect relationships (e.g., foreign keys, related names) between models led to data retrieval issues.
+- **Fix**: Carefully reviewed model fields, corrected `related_name` and foreign key references, and ran migrations to apply changes.
+
+#### 3. Dependency Downgrades and Compatibility
+- **Issue**: Some dependencies were incompatible with Django’s current version or specific app functionality.
+- **Fix**: Downgraded certain dependencies to ensure compatibility and prevent unexpected errors.
+
+#### 4. Migrations and Database Issues
+- **Issue**: Missing migrations, errors with migrations not being applied, or migrations applied in an incorrect order.
+- **Fix**: Regularly ran `makemigrations` and `migrate`, checked the migrations folder, and used `--fake` migration commands as needed to resolve database discrepancies.
+
+#### 5. Permissions and Authentication
+- **Issue**: Some API views required custom permissions, causing errors when unauthenticated users accessed restricted data.
+- **Fix**: Implemented `permissions.IsAuthenticatedOrReadOnly` for views and used Django’s built-in permissions system to enforce access control.
+
+#### 6. Debugging Fetch Requests in Front-End
+- **Issue**: Fetch requests from React failed due to CORS, incorrect URL paths, or authorization headers.
+- **Fix**: Set up `django-cors-headers` to manage CORS for front-end access, and reviewed all fetch request headers and paths.
+
+
+This project has been a learning process, with solutions to these bugs helping improve the application’s functionality, stability, and maintainability.
+
 
 # How to create a New App on Heroku
 
