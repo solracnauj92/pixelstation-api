@@ -616,6 +616,62 @@ Control your privacy on the platform.
 
 -----------------------
 
+### URL Configuration
+
+The `urlpatterns` list routes URLs to views.
+
+#### Comments App:
+- **POST** `/comments/` - List all comments.
+- **GET** `/comments/<int:pk>/` - Retrieve, update, or delete a specific comment.
+
+#### Debate Hub App:
+- **GET** `/hubs/` - List all hubs.
+- **GET** `/hubs/<int:id>/` - Retrieve details of a specific hub.
+- **GET** `/hubs/<int:id>/debates/` - List all debates in a specific hub.
+- **GET** `/hubs/<int:hub_id>/debates/<int:pk>/` - Retrieve, update, or delete a specific debate.
+
+#### Follower App:
+- **POST** `/followers/` - List all followers.
+- **GET** `/followers/<int:pk>/` - Retrieve, update, or delete a specific follower.
+
+#### Forum App:
+- **GET** `/forums/` - List all forums.
+- **GET** `/forums/<int:pk>/` - Retrieve, update, or delete a specific forum.
+- **POST** `/forums/<int:forum_id>/threads/` - List or create threads in a specific forum.
+- **GET** `/threads/<int:pk>/` - Retrieve, update, or delete a specific thread.
+- **POST** `/threads/<int:thread_id>/replies/` - List or create replies for a specific thread.
+
+#### Game Library App:
+- **GET** `/game-library/` - Display game library homepage.
+- **GET** `/game-library/games/` - List all games.
+- **GET** `/game-library/games/<int:pk>/` - Retrieve details of a specific game.
+- **GET** `/game-library/user-games/` - List games associated with the logged-in user.
+
+#### Likes App:
+- **GET** `/likes/` - List all likes.
+- **GET** `/likes/<int:pk>/` - Retrieve, update, or delete a specific like.
+
+#### Messaging App:
+- **GET** `/messages/<int:user_id>/` - List all messages for a user.
+- **POST** `/messages/` - Create a new message.
+
+#### Posts App:
+- **GET** `/posts/` - List all posts.
+- **GET** `/posts/<int:pk>/` - Retrieve, update, or delete a specific post.
+
+#### Profiles App:
+- **GET** `/profiles/` - List all profiles.
+- **GET** `/profiles/<int:pk>/` - Retrieve, update, or delete a specific profile.
+
+## Project Challenges and Issues with Endpoints
+
+During the development of this project, I encountered several challenges, particularly with matching endpoints between the backend (Django) and the frontend (React). A major issue stemmed from typographical errors, similar naming conventions, and my limited experience working with both Django and React together. These issues led to difficulties in fetching data correctly, causing delays and additional debugging time.
+
+Due to these problems, I had to carefully review and ensure that all endpoints worked properly and didn't cause issues in the frontend. However, despite these efforts, not all endpoints are fully functional, as some are intended for future implementation. Unfortunately, due to time constraints, I was unable to properly integrate and test these endpoints before the deadline.
+
+Moving forward, I plan to revisit these issues, implement the missing features, and ensure that all endpoints are fully functional to provide a seamless experience between the frontend and backend.
+
+
 ## Technologies Used
 
 The following technologies were used throughout the development of this project:
