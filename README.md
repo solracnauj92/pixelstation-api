@@ -856,6 +856,18 @@ Throughout the project, several bugs emerged, often requiring detailed troublesh
 
 This project has been a learning process, with solutions to these bugs helping improve the application’s functionality, stability, and maintainability.
 
+### Known Issues
+
+The following features are currently non-functional and likely require further investigation of routing or code logic:
+
+- **Forum Threads and Replies**: Issues with routing or model configuration prevent threads and replies from functioning as expected.
+- **Debate Hub Responses**: Responses within the Debate Hub are not appearing correctly, possibly due to routing issues or view configuration.
+- **Game Library Collection**: Game collections within the Game Library are not fetching data correctly; this may be a routing or serializer issue.
+- **Messaging**: Messaging functionality is entirely non-functional and has caused issues on the profile page. The `currentUser` data is not loading correctly, likely affecting related features on the page.
+
+These issues were challenging to debug fully within the project timeframe, and additional fixes are planned for future updates.
+
+
 
 # How to create a New App on Heroku
 
