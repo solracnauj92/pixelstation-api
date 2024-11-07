@@ -1205,12 +1205,6 @@ The project uses **PEP8CI** to automatically check Python code style against PEP
 
 ## Testing Images 
 
-The repository includes a set of images for testing the image processing features, located in the `Documentation/testingimages/` folder.
-
-These images are already uploaded to the repository, and you can view the folder directly on GitHub:
-
-[View Testing Images Folder](https://github.com/solracnauj92/pixelstation-api/tree/main/Documentation/testingimages)
-
 ### Code Style Validation
 PEP8CI runs automatically when you push changes to the repository. The service will report any PEP 8 violations directly on the dashboard.
 
