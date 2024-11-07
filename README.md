@@ -1196,6 +1196,31 @@ pip install -r requirements.txt
 These dependencies are listed in `requirements.txt` to ensure consistent development and deployment environments.
 
 
+# Testing
+
+## Continuous Integration (CI) Setup with PEP8CI
+
+The project uses **PEP8CI** to automatically check Python code style against PEP 8 standards. You can view the status of your latest commit and any style issues on the [PEP8CI Dashboard](https://pep8ci.herokuapp.com/).
+
+
+## Testing Images 
+
+The repository includes a set of images for testing the image processing features, located in the `Documentation/testingimages/` folder.
+
+These images are already uploaded to the repository, and you can view the folder directly on GitHub:
+
+[View Testing Images Folder](https://github.com/solracnauj92/pixelstation-api/tree/main/Documentation/testingimages)
+
+### Code Style Validation
+PEP8CI runs automatically when you push changes to the repository. The service will report any PEP 8 violations directly on the dashboard.
+
+## CI Testing Screenshots
+
+As part of the CI testing, screenshots of the test results are included in the repository for reference. These screenshots capture the output of various tests run during the CI process.
+
+The screenshots can be found in the `Documentation/testingimages/` folder. You can view them directly on GitHub using the following link:
+
+[View CI Testing Screenshots Folder](https://github.com/solracnauj92/pixelstation-api/tree/main/Documentation/testingimagesn)
 
 
 ## References
