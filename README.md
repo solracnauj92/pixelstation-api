@@ -189,7 +189,6 @@ The Messaging app posed significant challenges, particularly in endpoint connect
 ### Comment App
 
 
-
 The **Comment** app allows users to comment on posts.
 
 #### Functionality Breakdown:
@@ -236,30 +235,40 @@ The **Follower** app allows users to follow/unfollow each other.
 
 ### Forum App
 
-The **Forum** app enables users to create forums, threads, and posts.
+The **Forum** app allows users to engage in discussions by creating forums, threads, and posts, with the ability to reply to forum posts.
 
 #### Functionality Breakdown:
-- **Models (models.py)**: Defines structures for forums, threads, and posts.
-- **Serializers (serializers.py)**: Transforms forum data.
-- **Views (views.py)**: Handles forum-related requests.
+- **Models (models.py)**: Defines forum, thread, post, and reply structures.
+- **Serializers (serializers.py)**: Transforms forum-related data.
+- **Views (views.py)**: Handles forum, thread, post, and reply requests.
 - **URLs (urls.py)**: Routes requests.
-- **Admin (admin.py)**: Manages forums in the admin interface.
+- **Admin (admin.py)**: Manages forums, threads, and posts in the admin interface.
 - **Migrations (migrations/)**: Tracks schema changes.
 - **Tests (tests.py)**: Ensures expected functionality.
 
 #### Models:
 - **Forum**: Fields include `name`, `description`, `created_at`.
-- **Thread**: Fields include `forum`, `title`, `creator`, `created_at`.
-- **Post**: Fields include `thread`, `author`, `content`, `created_at`.
+- **Thread**: Fields include `title`, `forum`, `creator`, `created_at`.
+- **ForumPost**: Fields include `content`, `thread`, `author`, `created_at`.
+- **Reply**: Fields include `content`, `post`, `author`, `created_at`.
 
 #### Serializers:
 - **ForumSerializer**: Serializes forum data.
 - **ThreadSerializer**: Serializes thread data.
-- **PostSerializer**: Serializes post data.
+- **ForumPostSerializer**: Serializes forum post data.
+- **ReplySerializer**: Serializes reply data.
+
+#### Views:
+- **ForumList**: Lists all forums and allows creation of new forums.
+- **ForumDetail**: Retrieves, updates, or deletes a specific forum.
+- **ThreadListCreate**: Lists threads in a forum or allows creating new threads.
+- **ThreadDetail**: Retrieves, updates, or deletes a specific thread.
+- **ReplyListCreate**: Lists replies to a specific thread or allows creating new replies.
 
 ---
 
 ### Game Library App
+
 
 The **Game Library** app allows users to manage their game collections.
 
@@ -273,12 +282,13 @@ The **Game Library** app allows users to manage their game collections.
 - **Tests (tests.py)**: Ensures expected functionality.
 
 #### Models:
-- **Game**: Fields include `title`, `developer`, `release_date`, `platform`.
-- **GameCollection**: Fields include `user`, `game`, `added_at`.
+- **Game**: Fields include `title`, `description`, `genre`, `release_date`, `image`.
+- **UserGame**: Fields include `user`, `game`, `added_at`.
 
 #### Serializers:
 - **GameSerializer**: Serializes game data.
-- **GameCollectionSerializer**: Serializes game collection data.
+- **UserGameSerializer**: Serializes user game collection data with additional fields like `game_title`.
+
 
 ---
 
@@ -305,10 +315,10 @@ The **Likes** app allows users to express appreciation for posts.
 
 ### Messaging App
 
-The **Messaging** app enables users to send and receive messages.
+The **Messaging** app allows users to send and receive messages.
 
 #### Functionality Breakdown:
-- **Models (models.py)**: Defines message structure.
+- **Models (models.py)**: Defines the message structure.
 - **Serializers (serializers.py)**: Transforms message data.
 - **Views (views.py)**: Handles message-related requests.
 - **URLs (urls.py)**: Routes requests.
@@ -316,11 +326,15 @@ The **Messaging** app enables users to send and receive messages.
 - **Migrations (migrations/)**: Tracks schema changes.
 - **Tests (tests.py)**: Ensures expected functionality.
 
-#### Message Model:
-- **Fields**: `sender`, `receiver`, `content`, `timestamp`.
+#### Models:
+- **Message**: Fields include `sender`, `receiver`, `subject`, `content`, `created_at`, `is_read`.
 
 #### Serializers:
-- **MessageSerializer**: Handles message data serialization.
+- **MessageSerializer**: Serializes message data, including `sender`, `receiver`, `subject`, `content`, and `created_at`.
+
+#### Views:
+- **MessageViewSet**: Handles message listing, filtering by receiver, and message creation for authenticated users.
+
 
 ---
 
@@ -370,6 +384,73 @@ The **User Profile** app allows users to create and manage profiles.
 #### Views:
 - **ProfileList View**: Lists user profiles.
 - **ProfileDetail View**: Retrieves and updates specific profiles.
+
+---
+
+
+---
+
+### Newsletter Subscription App
+
+The **Newsletter Subscription** app allows users to subscribe to community updates.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines subscription structure.
+- **Serializers (serializers.py)**: Transforms subscription data.
+- **Views (views.py)**: Handles subscription-related requests.
+- **URLs (urls.py)**: Routes requests.
+- **Admin (admin.py)**: Manages subscriptions in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Models:
+- **NewsletterSubscription**: Fields include `name`, `email`, `created_at`.
+
+#### Serializers:
+- **NewsletterSubscriptionSerializer**: Handles subscription data serialization.
+
+#### Views:
+- **NewsletterSubscriptionView**: Allows users to create a new subscription.
+- **NewsletterSubscriptionListView**: Lists all subscriptions with filtering options.
+
+#### Custom Logic:
+- **Subscription Validation**: Prevents duplicate email subscriptions.
+
+
+---
+
+
+---
+
+### Debate Hub
+
+The **Debate Hub** app allows users to create hubs for debates and participate in discussions within them.
+
+#### Functionality Breakdown:
+- **Models (models.py)**: Defines the hub and debate structures.
+- **Serializers (serializers.py)**: Transforms hub and debate data.
+- **Views (views.py)**: Handles requests related to hubs and debates.
+- **URLs (urls.py)**: Routes requests for hubs and debates.
+- **Admin (admin.py)**: Manages hubs and debates in the admin interface.
+- **Migrations (migrations/)**: Tracks schema changes.
+- **Tests (tests.py)**: Ensures expected functionality.
+
+#### Hub Model:
+- **Fields**: `name`, `description`, `created_at`.
+
+#### Debate Model:
+- **Fields**: `content`, `hub`, `author`, `created_at`.
+
+#### Serializers:
+- **HubSerializer**: Serializes data for hubs.
+- **DebateSerializer**: Serializes data for debates.
+
+#### Views:
+- **HubList View**: Lists and creates hubs.
+- **HubDetail View**: Retrieves a specific hub.
+- **HubDebateList View**: Lists and creates debates within a hub.
+- **DebateDetail View**: Retrieves, updates, or deletes a specific debate.
+
 -----
 
 # Key Features Implemented / User Stories
