@@ -110,6 +110,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     '8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
     '8000-solracnauj9-pixelstatio-04abwbiem5e.ws-eu120.gitpod.io',
+    '8000-solracnauj9-pixelstatio-wvpd7tt2gee.ws-eu120.gitpod.io',
     'localhost',
     'pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
@@ -118,6 +119,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
+    'https://8000-solracnauj9-pixelstatio-wvpd7tt2gee.ws-eu120.gitpod.io',
     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
 
@@ -269,6 +271,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
