@@ -41,9 +41,19 @@ if 'DEV' in os.environ:
         }
     }
 else:
+    DATABASE_URL = os.environ.get("DATABASE_URL")
+    if DATABASE_URL and "sslmode" not in DATABASE_URL:
+        # Ensure sslmode=require for secure connections
+        if '?' in DATABASE_URL:
+            DATABASE_URL += '&sslmode=require'
+        else:
+            DATABASE_URL += '?sslmode=require'
+    if not DATABASE_URL:
+        raise ValueError("DATABASE_URL environment variable not set")
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
+
 
 
 # REST Framework configuration
@@ -99,9 +109,11 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
+    '8000-solracnauj9-pixelstatio-04abwbiem5e.ws-eu120.gitpod.io',
     'localhost',
     'pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
+
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -154,6 +166,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
