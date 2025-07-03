@@ -119,6 +119,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
+    'https://3000-solracnauj9-pixelstatio-bx2j0fr7os6.ws-eu120.gitpod.io',
     'https://8000-solracnauj9-pixelstatio-wvpd7tt2gee.ws-eu120.gitpod.io',
     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
@@ -191,6 +192,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
      'https://pixelstationproject5-17ab85818140.herokuapp.com',
+     'https://3000-solracnauj9-pixelstatio-bx2j0fr7os6.ws-eu120.gitpod.io',
      'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
      'http://localhost:3000',
      'http://127.0.0.1:3000',
