@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
-from dj_rest_auth.jwt_auth import get_refresh_view, get_jwt_view
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenVerifyView
+from dj_rest_auth.jwt_auth import get_refresh_view
+
 
 urlpatterns = [
     path('', root_route),
@@ -25,7 +27,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
     # 🛠️ JWT login override MUST come before dj-rest-auth include
-    path('dj-rest-auth/login/', get_jwt_view().as_view(), name='jwt_login'),
+    path('dj-rest-auth/login/', TokenObtainPairView.as_view(), name='jwt_login'),
 
     path('dj-rest-auth/logout/', logout_route),
     path('dj-rest-auth/token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
