@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
-from dj_rest_auth.jwt_auth import get_refresh_view
+from dj_rest_auth.jwt_auth import get_refresh_view, get_verify_view
+
 
 urlpatterns = [
     path('', root_route),
@@ -24,6 +25,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/logout/', logout_route),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/token/verify/', get_verify_view().as_view(), name='token_verify'),
     path('dj-rest-auth/token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('allauth.urls')),
