@@ -17,9 +17,10 @@ import dj_database_url
 from datetime import timedelta  
 
 
-if os.path.exists('env.py'):
-    import env
+
 from corsheaders.defaults import default_headers
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Cloudinary settings for media storage
