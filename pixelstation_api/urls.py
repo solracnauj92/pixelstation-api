@@ -16,20 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
-from dj_rest_auth.jwt_auth import get_refresh_view
+from dj_rest_auth.jwt_auth import get_refresh_view, get_jwt_view
 from rest_framework_simplejwt.views import TokenVerifyView
-
-
 
 urlpatterns = [
     path('', root_route),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+
+    # 🛠️ JWT login override MUST come before dj-rest-auth include
+    path('dj-rest-auth/login/', get_jwt_view().as_view(), name='jwt_login'),
+
     path('dj-rest-auth/logout/', logout_route),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('dj-rest-auth/token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
+    path('dj-rest-auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+
     path('accounts/', include('allauth.urls')),
     path('', include('profiles.urls')),
     path('', include('posts.urls')),
@@ -38,11 +41,9 @@ urlpatterns = [
     path('', include('followers.urls')),
     path('forums/', include('forums.urls')),
     path('messaging/', include('messaging.urls')),
-    path('game_library/', include('game_library.urls')), 
+    path('game_library/', include('game_library.urls')),
     path('newsletter/', include('newsletter.urls')),
     path('debatehub/', include('debatehub.urls')),
-
-
-    
 ]
+
 
