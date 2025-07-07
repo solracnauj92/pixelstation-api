@@ -121,6 +121,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
     'https://3000-solracnauj9-pixelstatio-bx2j0fr7os6.ws-eu120.gitpod.io',
     'https://8000-solracnauj9-pixelstatio-wvpd7tt2gee.ws-eu120.gitpod.io',
+    "https://pixelstationproject5-17ab85818140.herokuapp.com",
     'https://pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
 
@@ -313,3 +314,8 @@ LOGGING = {
     },
 
 }
+
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
