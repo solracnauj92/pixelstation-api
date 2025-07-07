@@ -112,6 +112,7 @@ ALLOWED_HOSTS = [
     '8000-solracnauj9-pixelstatio-jwocpeoixuv.ws.codeinstitute-ide.net',
     '8000-solracnauj9-pixelstatio-04abwbiem5e.ws-eu120.gitpod.io',
     '8000-solracnauj9-pixelstatio-wvpd7tt2gee.ws-eu120.gitpod.io',
+    '8000-solracnauj9-pixelstatio-jw68pf6xpen.ws-eu120.gitpod.io',
     'localhost',
     'pixelstationproject5-api-1a9dadf46f0b.herokuapp.com',
 ]
